@@ -1,3 +1,4 @@
+# 前言
 - Abhishek Thakur，很多kaggler对他都非常熟悉，2017年，他在 Linkedin 发表了一篇名为**Approaching (Almost) Any Machine Learning Problem**的文章，介绍他建立的一个自动的机器学习框架，几乎可以解决任何机器学习问题，这篇文章曾火遍 Kaggle。
  - Abhishek在Kaggle上的成就：
 	 - Competitions Grandmaster（17枚金牌，世界排名第3）
