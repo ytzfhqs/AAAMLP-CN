@@ -5,7 +5,7 @@
 	 - Kernels Expert （Kagglers排名前1％）
 	 - Discussion Grandmaster（65枚金牌，世界排名第2）
  - 目前，Abhishek在挪威boost公司担任首席数据科学家的职位，这是一家专门从事会话人工智能的软件公司。
- - 本文对**Approaching (Almost) Any Machine Learning Problem**进行了**中文翻译**，由于本人水平有限，且未使用机器翻译，可能有部分言语不通顺或本土化程度不足，也请大家在阅读过程中多提供宝贵意见。
+ - 本文对**Approaching (Almost) Any Machine Learning Problem**进行了**中文翻译**，由于本人水平有限，且未使用机器翻译，可能有部分言语不通顺或本土化程度不足，也请大家在阅读过程中多提供宝贵意见。另附上书籍原[项目地址](https://github.com/abhishekkrthakur/approachingalmost)
  - 因为有几章内容太过基础，所以未进行翻译，详细情况请参照书籍目录：
 	 - 准备环境（未翻译）
 	 - 无监督和有监督学习（未翻译）
@@ -20,5 +20,5 @@
 	 - 文本分类或回归方法（未翻译）
 	 - 组合和堆叠方法（未翻译）
 	 - 可重复代码和模型方法（未翻译）
- - 我将会把翻译后``markdown``文件放在Github上，供大家免费下载，若在阅读过程中发现错误，也欢迎大家提出issue或者PR协助我修改。
+ - 我将会把翻译后``markdown``文件放在Github上，供大家免费下载，观看时建议使用PDF。若在阅读过程中发现错误，也欢迎大家提出issue或者PR协助我修改。
  - 如果后续大家有需要可能会**继续翻译未翻译**的章节，如果对大家有帮助的话，请帮忙点个star，或者关注。
