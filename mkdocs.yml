@@ -1,0 +1,58 @@
+site_name: AAAMLP 中译版
+docs_dir: docs/
+repo_name: 'ytzfhqs/AAAMLP-CN'
+repo_url: https://github.com/ytzfhqs/AAAMLP-CN
+theme:
+  name: material
+  language: zh
+  static_templates:
+    - 404.html
+  include_search_page: false
+  search_index_only: true
+  features:
+    - header.autohide
+    - navigation.tracking
+    - navigation.top
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.annotate
+  palette:
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: deep blue
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: cyan
+      accent: deep blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+
+nav:
+  - 前言: 'index.md'
+  - 交叉检验: '交叉检验.md'
+  - 评估指标: '评估指标.md'
+  - 组织机器学习项目: '组织机器学习项目.md'
+  - 处理分类变量: '处理分类变量.md'
+  - 特征工程: '特征工程.md'
+  - 特征选择: '特征选择.md'
+  - 超参数优化: '超参数优化.md'
