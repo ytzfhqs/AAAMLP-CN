@@ -1,0 +1,960 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>超参数优化 - AAAMLP 中译版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AAAMLP 中译版" class="md-header__button md-logo" aria-label="AAAMLP 中译版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAAMLP 中译版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              超参数优化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="deep-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/ytzfhqs/AAAMLP-CN" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytzfhqs/AAAMLP-CN
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AAAMLP 中译版" class="md-nav__button md-logo" aria-label="AAAMLP 中译版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    AAAMLP 中译版
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ytzfhqs/AAAMLP-CN" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytzfhqs/AAAMLP-CN
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%A4%E5%8F%89%E6%A3%80%E9%AA%8C/" class="md-nav__link">
+        交叉检验
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/" class="md-nav__link">
+        评估指标
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BB%84%E7%BB%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/" class="md-nav__link">
+        组织机器学习项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%84%E7%90%86%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        处理分类变量
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        特征工程
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        特征选择
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        超参数优化
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ytzfhqs/AAAMLP-CN/edit/master/docs/超参数优化.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">超参数优化</h1>
+<p>有了优秀的模型，就有了优化超参数以获得最佳得分模型的难题。那么，什么是超参数优化呢？假设您的机器学习项目有一个简单的流程。有一个数据集，你直接应用一个模型，然后得到结果。模型在这里的参数被称为超参数，即控制模型训练/拟合过程的参数。如果我们用 SGD 训练线性回归，模型的参数是斜率和偏差，超参数是学习率。你会发现我在本章和本书中交替使用这些术语。假设模型中有三个参数 a、b、c，所有这些参数都可以是 1 到 10 之间的整数。这些参数的 "正确 "组合将为您提供最佳结果。因此，这就有点像一个装有三拨密码锁的手提箱。不过，三拨密码锁只有一个正确答案。而模型有很多正确答案。那么，如何找到最佳参数呢？一种方法是对所有组合进行评估，看哪种组合能提高指标。让我们看看如何做到这一点。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 初始化最佳准确度</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">best_accuracy</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 初始化最佳参数的字典</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">best_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span> 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 循环遍历 a 的取值范围 1~10</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1"># 循环遍历 b 的取值范围 1~10</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="c1"># 循环遍历 c 的取值范围 1~10</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="c1"># 创建模型，使用 a、b、c 参数</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="n">model</span> <span class="o">=</span> <span class="n">MODEL</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="c1"># 使用训练数据拟合模型</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_data</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="c1"># 使用模型对验证数据进行预测</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">validation_data</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="c1"># 计算预测的准确度</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>             <span class="c1"># 如果当前准确度优于之前的最佳准确度，则更新最佳准确度和最佳参数</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="k">if</span> <span class="n">accuracy</span> <span class="o">&gt;</span> <span class="n">best_accuracy</span><span class="p">:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                <span class="n">best_accuracy</span> <span class="o">=</span> <span class="n">accuracy</span> 
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                <span class="n">best_parameters</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>                <span class="n">best_parameters</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> 
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>                <span class="n">best_parameters</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+</code></pre></div>
+<p>在上述代码中，我们从 1 到 10 对所有参数进行了拟合。因此，我们总共要对模型进行 1000 次（10 x 10 x 10）拟合。这可能会很昂贵，因为模型的训练需要很长时间。不过，在这种情况下应该没问题，但在现实世界中，并不是只有三个参数，每个参数也不是只有十个值。 大多数模型参数都是实数，不同参数的组合可以是无限的。</p>
+<p>让我们看看 scikit-learn 的随机森林模型。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">RandomForestClassifier</span><span class="p">(</span> 
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> 
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">min_impurity_split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">ccp_alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="n">max_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">)</span>
+</code></pre></div>
+<p>有 19 个参数，而所有这些参数的所有组合，以及它们可以承担的所有值，都将是无穷无尽的。通常情况下，我们没有足够的资源和时间来做这件事。因此，我们指定了一个参数网格。在这个网格上寻找最佳参数组合的搜索称为网格搜索。我们可以说，n_estimators 可以是 100、200、250、300、400、500；max_depth 可以是 1、2、5、7、11、15；criterion 可以是 gini 或 entropy。这些参数看起来并不多，但如果数据集过大，计算起来会耗费大量时间。我们可以像之前一样创建三个 for 循环，并在验证集上计算得分，这样就能实现网格搜索。还必须注意的是，如果要进行 k 折交叉验证，则需要更多的循环，这意味着需要更多的时间来找到完美的参数。因此，网格搜索并不流行。让我们以根据<strong>手机配置预测手机价格范围</strong>数据集为例，看看它是如何实现的。</p>
+<p><img alt="" src="../figures/AAAMLP_page168_image.png" /></p>
+<p align="center"><b>图 1：手机配置预测手机价格范围数据集展示</b> </p>
+
+<p>训练集中只有 2000 个样本。我们可以轻松地使用分层 kfold 和准确率作为评估指标。我们将使用具有上述参数范围的随机森林模型，并在下面的示例中了解如何进行网格搜索。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># rf_grid_search.py </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span> 
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="c1"># 读取数据</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../input/mobile_train.csv&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="c1"># 删除 price_range 列</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;price_range&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="c1"># 取目标变量 y（&quot;price_range&quot;列）</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">price_range</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="c1"># 创建随机森林分类器，使用所有可用的 CPU 核心进行训练</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">classifier</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="c1"># 定义要进行网格搜索的参数网格</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> 
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">]</span> 
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="c1"># 创建 GridSearchCV 对象 model，用于在参数网格上进行网格搜索</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span> 
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="n">estimator</span><span class="o">=</span><span class="n">classifier</span><span class="p">,</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>        <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> 
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> 
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="n">cv</span><span class="o">=</span><span class="mi">5</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    <span class="p">)</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    <span class="c1"># 使用网格搜索对象 model 拟合数据，寻找最佳参数组合</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    <span class="c1"># 打印出最佳模型的最佳准确度分数</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best score: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">best_score_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>    <span class="c1"># 打印最佳参数集合</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameters set:&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="n">best_parameters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> 
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">param_grid</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">param_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>这里打印了很多内容，让我们看看最后几行。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span>  <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.895</span><span class="p">,</span> 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">total</span><span class="o">=</span>  <span class="mf">1.0</span><span class="n">s</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span> <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span> <span class="o">...............</span> 
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span>  <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.890</span><span class="p">,</span> 
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">total</span><span class="o">=</span>  <span class="mf">1.1</span><span class="n">s</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span> <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span> <span class="o">...............</span> 
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span>  <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.910</span><span class="p">,</span> 
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">total</span><span class="o">=</span>  <span class="mf">1.1</span><span class="n">s</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span> <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span> <span class="o">...............</span> 
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span>  <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.880</span><span class="p">,</span> 
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">total</span><span class="o">=</span>  <span class="mf">1.1</span><span class="n">s</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span> <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span> <span class="o">...............</span> 
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">[</span><span class="n">CV</span><span class="p">]</span>  <span class="n">criterion</span><span class="o">=</span><span class="n">entropy</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">0.870</span><span class="p">,</span> 
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">total</span><span class="o">=</span>  <span class="mf">1.1</span><span class="n">s</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">[</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)]:</span> <span class="n">Done</span> <span class="mi">360</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">360</span> <span class="o">|</span> <span class="n">elapsed</span><span class="p">:</span> <span class="mf">3.7</span><span class="nb">min</span> <span class="n">finished</span> 
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">Best</span> <span class="n">score</span><span class="p">:</span> <span class="mf">0.889</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">Best</span> <span class="n">parameters</span> <span class="nb">set</span><span class="p">:</span> 
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="n">criterion</span><span class="p">:</span> <span class="s1">&#39;entropy&#39;</span> 
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="n">max_depth</span><span class="p">:</span> <span class="mi">15</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="n">n_estimators</span><span class="p">:</span> <span class="mi">500</span>
+</code></pre></div>
+<p>最后，我们可以看到，5折交叉检验最佳得分是 0.889，我们的网格搜索得到了最佳参数。我们可以使用的下一个最佳方法是<strong>随机搜索</strong>。在随机搜索中，我们随机选择一个参数组合，然后计算交叉验证得分。这里消耗的时间比网格搜索少，因为我们不对所有不同的参数组合进行评估。我们选择要对模型进行多少次评估，这就决定了搜索所需的时间。代码与上面的差别不大。除 GridSearchCV 外，我们使用 RandomizedSearchCV。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">classifier</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="c1"># 更改搜索空间</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> 
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">]</span> 
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="c1"># 随机参数搜索</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">RandomizedSearchCV</span><span class="p">(</span> 
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="n">estimator</span><span class="o">=</span><span class="n">classifier</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="n">param_distributions</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> 
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>        <span class="n">n_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> 
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="n">cv</span><span class="o">=</span><span class="mi">5</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="p">)</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="c1"># 使用网格搜索对象 model 拟合数据，寻找最佳参数组合</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best score: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">best_score_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameters set:&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="n">best_parameters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> 
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">param_grid</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">param_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>我们更改了随机搜索的参数网格，结果似乎有了些许改进。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Best</span> <span class="n">score</span><span class="p">:</span> <span class="mf">0.8905</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Best</span> <span class="n">parameters</span> <span class="nb">set</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">criterion</span><span class="p">:</span> <span class="n">entropy</span> 
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">max_depth</span><span class="p">:</span> <span class="mi">25</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">n_estimators</span><span class="p">:</span> <span class="mi">300</span>
+</code></pre></div>
+<p>如果迭代次数较少，随机搜索比网格搜索更快。使用这两种方法，你可以为各种模型找到最优参数，只要它们有拟合和预测功能，这也是 scikit-learn 的标准。有时，你可能想使用管道。例如，假设我们正在处理一个多类分类问题。在这个问题中，训练数据由两列文本组成，你需要建立一个模型来预测类别。让我们假设你选择的管道是首先以半监督的方式应用 tf-idf，然后使用 SVD 和 SVM 分类器。现在的问题是，我们必须选择 SVD 的成分，还需要调整 SVM 的参数。下面的代码段展示了如何做到这一点。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">pipeline</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># 计算加权二次 Kappa 分数</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="k">def</span> <span class="nf">quadratic_weighted_kappa</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="k">return</span> <span class="n">metrics</span><span class="o">.</span><span class="n">cohen_kappa_score</span><span class="p">(</span> 
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="n">y_true</span><span class="p">,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="n">y_pred</span><span class="p">,</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;quadratic&quot;</span> 
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="p">)</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="c1"># 读取训练集</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../input/train.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="c1"># 从测试数据中提取 id 列的值，并将其转换为整数类型，存储在变量 idx 中</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">idx</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> 
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="c1"># 从训练数据中删除 &#39;id&#39; 列</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>    <span class="c1"># 从测试数据中删除 &#39;id&#39; 列</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>    <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>    <span class="c1"># 从训练数据中提取目标变量 &#39;relevance&#39; ，存储在变量 y 中</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">relevance</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="c1"># 将训练数据中的文本特征 &#39;text1&#39; 和 &#39;text2&#39; 合并成一个新的特征列，并存储在列表 traindata 中</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="n">traindata</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;text1&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;text2&#39;</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="c1"># 将测试数据中的文本特征 &#39;text1&#39; 和 &#39;text2&#39; 合并成一个新的特征列，并存储在列表 testdata 中</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>    <span class="n">testdata</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;text1&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;text2&#39;</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>    <span class="c1"># 创建一个 TfidfVectorizer 对象 tfv，用于将文本数据转换为 TF-IDF 特征</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>    <span class="n">tfv</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span> 
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>        <span class="n">min_df</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>        <span class="n">strip_accents</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span> 
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>        <span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>        <span class="n">token_pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\w{1,}&#39;</span><span class="p">,</span> 
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>        <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a>        <span class="n">use_idf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>        <span class="n">smooth_idf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a>        <span class="n">sublinear_tf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a>        <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>    <span class="p">)</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>    <span class="c1"># 使用训练数据拟合 TfidfVectorizer，将文本特征转换为 TF-IDF 特征</span>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>    <span class="n">tfv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">traindata</span><span class="p">)</span>
+<a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>    <span class="c1"># 将训练数据中的文本特征转换为 TF-IDF 特征矩阵 X</span>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a>    <span class="n">X</span> <span class="o">=</span>  <span class="n">tfv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">traindata</span><span class="p">)</span> 
+<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a>    <span class="c1"># 将测试数据中的文本特征转换为 TF-IDF 特征矩阵 X_test</span>
+<a id="__codelineno-6-55" name="__codelineno-6-55" href="#__codelineno-6-55"></a>    <span class="n">X_test</span> <span class="o">=</span> <span class="n">tfv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testdata</span><span class="p">)</span>
+<a id="__codelineno-6-56" name="__codelineno-6-56" href="#__codelineno-6-56"></a>    <span class="c1"># 创建 TruncatedSVD 对象 svd，用于进行奇异值分解</span>
+<a id="__codelineno-6-57" name="__codelineno-6-57" href="#__codelineno-6-57"></a>    <span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">()</span>
+<a id="__codelineno-6-58" name="__codelineno-6-58" href="#__codelineno-6-58"></a>    <span class="c1"># 创建 StandardScaler 对象 scl，用于进行特征缩放</span>
+<a id="__codelineno-6-59" name="__codelineno-6-59" href="#__codelineno-6-59"></a>    <span class="n">scl</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-6-60" name="__codelineno-6-60" href="#__codelineno-6-60"></a>    <span class="c1"># 创建支持向量机分类器对象 svm_model</span>
+<a id="__codelineno-6-61" name="__codelineno-6-61" href="#__codelineno-6-61"></a>    <span class="n">svm_model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+<a id="__codelineno-6-62" name="__codelineno-6-62" href="#__codelineno-6-62"></a>
+<a id="__codelineno-6-63" name="__codelineno-6-63" href="#__codelineno-6-63"></a>    <span class="c1"># 创建机器学习管道 clf，包含奇异值分解、特征缩放和支持向量机分类器</span>
+<a id="__codelineno-6-64" name="__codelineno-6-64" href="#__codelineno-6-64"></a>    <span class="n">clf</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">(</span>
+<a id="__codelineno-6-65" name="__codelineno-6-65" href="#__codelineno-6-65"></a>        <span class="p">[</span>
+<a id="__codelineno-6-66" name="__codelineno-6-66" href="#__codelineno-6-66"></a>            <span class="p">(</span><span class="s1">&#39;svd&#39;</span><span class="p">,</span> <span class="n">svd</span><span class="p">),</span> 
+<a id="__codelineno-6-67" name="__codelineno-6-67" href="#__codelineno-6-67"></a>            <span class="p">(</span><span class="s1">&#39;scl&#39;</span><span class="p">,</span> <span class="n">scl</span><span class="p">),</span> 
+<a id="__codelineno-6-68" name="__codelineno-6-68" href="#__codelineno-6-68"></a>            <span class="p">(</span><span class="s1">&#39;svm&#39;</span><span class="p">,</span> <span class="n">svm_model</span><span class="p">)</span>
+<a id="__codelineno-6-69" name="__codelineno-6-69" href="#__codelineno-6-69"></a>        <span class="p">]</span> 
+<a id="__codelineno-6-70" name="__codelineno-6-70" href="#__codelineno-6-70"></a>    <span class="p">)</span>
+<a id="__codelineno-6-71" name="__codelineno-6-71" href="#__codelineno-6-71"></a>
+<a id="__codelineno-6-72" name="__codelineno-6-72" href="#__codelineno-6-72"></a>    <span class="c1"># 定义要进行网格搜索的参数网格 param_grid</span>
+<a id="__codelineno-6-73" name="__codelineno-6-73" href="#__codelineno-6-73"></a>    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-6-74" name="__codelineno-6-74" href="#__codelineno-6-74"></a>        <span class="s1">&#39;svd__n_components&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> 
+<a id="__codelineno-6-75" name="__codelineno-6-75" href="#__codelineno-6-75"></a>        <span class="s1">&#39;svm__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<a id="__codelineno-6-76" name="__codelineno-6-76" href="#__codelineno-6-76"></a>    <span class="p">}</span>
+<a id="__codelineno-6-77" name="__codelineno-6-77" href="#__codelineno-6-77"></a>
+<a id="__codelineno-6-78" name="__codelineno-6-78" href="#__codelineno-6-78"></a>    <span class="c1"># 创建自定义的评分函数 kappa_scorer，用于评估模型性能</span>
+<a id="__codelineno-6-79" name="__codelineno-6-79" href="#__codelineno-6-79"></a>    <span class="n">kappa_scorer</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">make_scorer</span><span class="p">(</span> 
+<a id="__codelineno-6-80" name="__codelineno-6-80" href="#__codelineno-6-80"></a>        <span class="n">quadratic_weighted_kappa</span><span class="p">,</span> 
+<a id="__codelineno-6-81" name="__codelineno-6-81" href="#__codelineno-6-81"></a>        <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-6-82" name="__codelineno-6-82" href="#__codelineno-6-82"></a>    <span class="p">)</span>
+<a id="__codelineno-6-83" name="__codelineno-6-83" href="#__codelineno-6-83"></a>
+<a id="__codelineno-6-84" name="__codelineno-6-84" href="#__codelineno-6-84"></a>    <span class="c1"># 创建 GridSearchCV 对象 model，用于在参数网格上进行网格搜索，寻找最佳参数组合</span>
+<a id="__codelineno-6-85" name="__codelineno-6-85" href="#__codelineno-6-85"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span> 
+<a id="__codelineno-6-86" name="__codelineno-6-86" href="#__codelineno-6-86"></a>        <span class="n">estimator</span><span class="o">=</span><span class="n">clf</span><span class="p">,</span>
+<a id="__codelineno-6-87" name="__codelineno-6-87" href="#__codelineno-6-87"></a>        <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> 
+<a id="__codelineno-6-88" name="__codelineno-6-88" href="#__codelineno-6-88"></a>        <span class="n">scoring</span><span class="o">=</span><span class="n">kappa_scorer</span><span class="p">,</span> 
+<a id="__codelineno-6-89" name="__codelineno-6-89" href="#__codelineno-6-89"></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-6-90" name="__codelineno-6-90" href="#__codelineno-6-90"></a>        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> 
+<a id="__codelineno-6-91" name="__codelineno-6-91" href="#__codelineno-6-91"></a>        <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+<a id="__codelineno-6-92" name="__codelineno-6-92" href="#__codelineno-6-92"></a>        <span class="n">cv</span><span class="o">=</span><span class="mi">5</span>
+<a id="__codelineno-6-93" name="__codelineno-6-93" href="#__codelineno-6-93"></a>    <span class="p">)</span>
+<a id="__codelineno-6-94" name="__codelineno-6-94" href="#__codelineno-6-94"></a>
+<a id="__codelineno-6-95" name="__codelineno-6-95" href="#__codelineno-6-95"></a>     <span class="c1"># 使用 GridSearchCV 对象 model 拟合数据，寻找最佳参数组合</span>
+<a id="__codelineno-6-96" name="__codelineno-6-96" href="#__codelineno-6-96"></a>    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-6-97" name="__codelineno-6-97" href="#__codelineno-6-97"></a>    <span class="c1"># 打印出最佳模型的最佳准确度分数</span>
+<a id="__codelineno-6-98" name="__codelineno-6-98" href="#__codelineno-6-98"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best score: </span><span class="si">%0.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<a id="__codelineno-6-99" name="__codelineno-6-99" href="#__codelineno-6-99"></a>    <span class="c1"># 打印最佳参数集合</span>
+<a id="__codelineno-6-100" name="__codelineno-6-100" href="#__codelineno-6-100"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameters set:&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-101" name="__codelineno-6-101" href="#__codelineno-6-101"></a>    <span class="n">best_parameters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> 
+<a id="__codelineno-6-102" name="__codelineno-6-102" href="#__codelineno-6-102"></a>    <span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">param_grid</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+<a id="__codelineno-6-103" name="__codelineno-6-103" href="#__codelineno-6-103"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">%s</span><span class="s2">: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">best_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]))</span> 
+<a id="__codelineno-6-104" name="__codelineno-6-104" href="#__codelineno-6-104"></a>
+<a id="__codelineno-6-105" name="__codelineno-6-105" href="#__codelineno-6-105"></a>    <span class="c1"># 获取最佳模型</span>
+<a id="__codelineno-6-106" name="__codelineno-6-106" href="#__codelineno-6-106"></a>    <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<a id="__codelineno-6-107" name="__codelineno-6-107" href="#__codelineno-6-107"></a>    <span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-6-108" name="__codelineno-6-108" href="#__codelineno-6-108"></a>    <span class="c1"># 使用最佳模型进行预测</span>
+<a id="__codelineno-6-109" name="__codelineno-6-109" href="#__codelineno-6-109"></a>    <span class="n">preds</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<p>这里显示的管道包括 SVD（奇异值分解）、标准缩放和 SVM（支持向量机）模型。请注意，由于没有训练数据，您无法按原样运行上述代码。当我们进入高级超参数优化技术时，我们可以使用不同类型的<strong>最小化算法</strong>来研究函数的最小化。这可以通过使用多种最小化函数来实现，如下坡单纯形算法、内尔德-梅德优化算法、使用贝叶斯技术和高斯过程寻找最优参数或使用遗传算法。我将在 "集合与堆叠（ensembling and stacking） "一章中详细介绍下坡单纯形算法和 Nelder-Mead 算法的应用。首先，让我们看看高斯过程如何用于超参数优化。这类算法需要一个可以优化的函数。大多数情况下，都是最小化这个函数，就像我们最小化损失一样。</p>
+<p>因此，比方说，你想找到最佳参数以获得最佳准确度，显然，准确度越高越好。现在，我们不能最小化精确度，但我们可以将精确度乘以-1。这样，我们是在最小化精确度的负值，但事实上，我们是在最大化精确度。 在高斯过程中使用贝叶斯优化，可以使用 scikit-optimize (skopt) 库中的 gp_minimize 函数。让我们看看如何使用该函数调整随机森林模型的参数。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kn">from</span> <span class="nn">skopt</span> <span class="kn">import</span> <span class="n">gp_minimize</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kn">from</span> <span class="nn">skopt</span> <span class="kn">import</span> <span class="n">space</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">param_names</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="c1"># 将参数名称和对应的值打包成字典</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">param_names</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="c1"># 创建随机森林分类器模型，使用传入的参数配置</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="c1"># 创建 StratifiedKFold 交叉验证对象，将数据分为 5 折</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="n">kf</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="c1"># 初始化用于存储每个折叠的准确度的列表</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="n">accuracies</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>     <span class="c1"># 循环遍历每个折叠的训练和测试数据</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>        <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">idx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>        <span class="n">xtrain</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>        <span class="n">ytrain</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span> 
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        <span class="n">xtest</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>        <span class="n">ytest</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>        <span class="c1"># 在训练数据上拟合模型</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>        <span class="c1"># 使用模型对测试数据进行预测</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>        <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xtest</span><span class="p">)</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>        <span class="c1"># 计算折叠的准确度</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>        <span class="n">fold_accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>        <span class="n">accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fold_accuracy</span><span class="p">)</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>    <span class="c1"># 返回平均准确度的负数（因为 skopt 使用负数来最小化目标函数）</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a>    <span class="c1"># 读取数据</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../input/mobile_train.csv&quot;</span><span class="p">)</span> 
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a>    <span class="c1"># 取特征矩阵 X（去掉&quot;price_range&quot;列）</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;price_range&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> 
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>    <span class="c1"># 目标变量 y（&quot;price_range&quot;列）</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">price_range</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a>    <span class="c1"># 定义超参数搜索空间 param_space</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a>    <span class="n">param_space</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a>        <span class="n">space</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;max_depth&quot;</span><span class="p">),</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a>        <span class="n">space</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">),</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a>        <span class="n">space</span><span class="o">.</span><span class="n">Categorical</span><span class="p">([</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;criterion&quot;</span><span class="p">),</span> 
+<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>        <span class="n">space</span><span class="o">.</span><span class="n">Real</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;max_features&quot;</span><span class="p">)</span> 
+<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a>    <span class="p">]</span>
+<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a>
+<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a>    <span class="c1"># 定义超参数的名称列表 param_names</span>
+<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a>    <span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span> 
+<a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a>        <span class="s2">&quot;max_depth&quot;</span><span class="p">,</span> 
+<a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a>        <span class="s2">&quot;n_estimators&quot;</span><span class="p">,</span> 
+<a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a>        <span class="s2">&quot;criterion&quot;</span><span class="p">,</span> 
+<a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a>        <span class="s2">&quot;max_features&quot;</span>
+<a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a>    <span class="p">]</span>
+<a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a>
+<a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a>    <span class="c1"># 创建函数 optimization_function，用于传递给 gp_minimize</span>
+<a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a>    <span class="n">optimization_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
+<a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a>        <span class="n">optimize</span><span class="p">,</span>
+<a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a>        <span class="n">param_names</span><span class="o">=</span><span class="n">param_names</span><span class="p">,</span> 
+<a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a>        <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+<a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a>        <span class="n">y</span><span class="o">=</span><span class="n">y</span> 
+<a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a>    <span class="p">)</span>
+<a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a>
+<a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a>    <span class="c1"># 使用 Bayesian Optimization（基于贝叶斯优化）来搜索最佳超参数</span>
+<a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">gp_minimize</span><span class="p">(</span> 
+<a id="__codelineno-7-77" name="__codelineno-7-77" href="#__codelineno-7-77"></a>        <span class="n">optimization_function</span><span class="p">,</span> 
+<a id="__codelineno-7-78" name="__codelineno-7-78" href="#__codelineno-7-78"></a>        <span class="n">dimensions</span><span class="o">=</span><span class="n">param_space</span><span class="p">,</span> 
+<a id="__codelineno-7-79" name="__codelineno-7-79" href="#__codelineno-7-79"></a>        <span class="n">n_calls</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<a id="__codelineno-7-80" name="__codelineno-7-80" href="#__codelineno-7-80"></a>        <span class="n">n_random_starts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+<a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span>
+<a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a>    <span class="p">)</span>
+<a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a>
+<a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a>    <span class="c1"># 获取最佳超参数的字典</span>
+<a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a>    <span class="n">best_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> 
+<a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a>        <span class="nb">zip</span><span class="p">(</span>
+<a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a>            <span class="n">param_names</span><span class="p">,</span> 
+<a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a>            <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+<a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a>        <span class="p">)</span> 
+<a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a>    <span class="p">)</span>
+<a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a>    <span class="c1"># 打印出找到的最佳超参数</span>
+<a id="__codelineno-7-92" name="__codelineno-7-92" href="#__codelineno-7-92"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">best_params</span><span class="p">)</span>
+</code></pre></div>
+<p>这同样会产生大量输出，最后一部分如下所示。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Iteration</span> <span class="n">No</span><span class="p">:</span> <span class="mi">14</span> <span class="n">started</span><span class="o">.</span> <span class="n">Searching</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">optimal</span> <span class="n">point</span><span class="o">.</span> 
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">Iteration</span> <span class="n">No</span><span class="p">:</span> <span class="mi">14</span> <span class="n">ended</span><span class="o">.</span> <span class="n">Search</span> <span class="n">finished</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">optimal</span> <span class="n">point</span><span class="o">.</span> 
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">Time</span> <span class="n">taken</span><span class="p">:</span> <span class="mf">4.7793</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">Function</span> <span class="n">value</span> <span class="n">obtained</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.9075</span> 
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">Current</span> <span class="n">minimum</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.9075</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">Iteration</span> <span class="n">No</span><span class="p">:</span> <span class="mi">15</span> <span class="n">started</span><span class="o">.</span> <span class="n">Searching</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">optimal</span> <span class="n">point</span><span class="o">.</span> 
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">Iteration</span> <span class="n">No</span><span class="p">:</span> <span class="mi">15</span> <span class="n">ended</span><span class="o">.</span> <span class="n">Search</span> <span class="n">finished</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">optimal</span> <span class="n">point</span><span class="o">.</span> 
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">Time</span> <span class="n">taken</span><span class="p">:</span> <span class="mf">49.4186</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">Function</span> <span class="n">value</span> <span class="n">obtained</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.9075</span> 
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">Current</span> <span class="n">minimum</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.9075</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;entropy&#39;</span><span class="p">,</span> 
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+</code></pre></div>
+<p>看来我们已经成功突破了 0.90 的准确率。这真是太神奇了！
+我们还可以通过以下代码段查看（绘制）我们是如何实现收敛的。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span> <span class="nn">skopt.plots</span> <span class="kn">import</span> <span class="n">plot_convergence</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">plot_convergence</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<p>收敛图如图 2 所示。</p>
+<p><img alt="" src="../figures/AAAMLP_page179_image.png" /></p>
+<p align="center"><b>图 2：随机森林参数优化的收敛图</b> </p>
+
+<p>Scikit- optimize 就是这样一个库。 hyperopt 使用树状结构贝叶斯估计器（TPE）来找到最优参数。请看下面的代码片段，我在使用 hyperopt 时对之前的代码做了最小的改动。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="kn">from</span> <span class="nn">hyperopt</span> <span class="kn">import</span> <span class="n">hp</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">tpe</span><span class="p">,</span> <span class="n">Trials</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="kn">from</span> <span class="nn">hyperopt.pyll.base</span> <span class="kn">import</span> <span class="n">scope</span> 
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">kf</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="o">...</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span> 
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../input/mobile_train.csv&quot;</span><span class="p">)</span> 
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;price_range&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> 
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">price_range</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>    <span class="c1"># 定义搜索空间（整型、浮点数型、选择型）</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>    <span class="n">param_space</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>        <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="n">scope</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s2">&quot;max_depth&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> 
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>        <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="n">scope</span><span class="o">.</span><span class="n">int</span><span class="p">(</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>            <span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>        <span class="p">),</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>        <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s2">&quot;criterion&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">]),</span> 
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>        <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="s2">&quot;max_features&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>    <span class="p">}</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>    <span class="c1"># 包装函数</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>    <span class="n">optimization_function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span> 
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>        <span class="n">optimize</span><span class="p">,</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>        <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> 
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>        <span class="n">y</span><span class="o">=</span><span class="n">y</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>    <span class="p">)</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>    <span class="c1"># 开始训练</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>    <span class="n">trials</span> <span class="o">=</span> <span class="n">Trials</span><span class="p">()</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>
+<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a>    <span class="c1"># 最小化目标值</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a>    <span class="n">hopt</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a>        <span class="n">fn</span><span class="o">=</span><span class="n">optimization_function</span><span class="p">,</span> 
+<a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a>        <span class="n">space</span><span class="o">=</span><span class="n">param_space</span><span class="p">,</span>
+<a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a>        <span class="n">algo</span><span class="o">=</span><span class="n">tpe</span><span class="o">.</span><span class="n">suggest</span><span class="p">,</span> 
+<a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a>        <span class="n">max_evals</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
+<a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a>        <span class="n">trials</span><span class="o">=</span><span class="n">trials</span>
+<a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a>    <span class="p">)</span>
+<a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a>    <span class="c1">#打印最佳参数</span>
+<a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">hopt</span><span class="p">)</span>
+</code></pre></div>
+<p>正如你所看到的，这与之前的代码并无太大区别。你必须以不同的格式定义参数空间，还需要改变实际优化部分，用 hyperopt 代替 gp_minimize。结果相当不错！</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="err">❯</span> <span class="n">python</span> <span class="n">rf_hyperopt</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="mi">100</span><span class="o">%|</span><span class="err">██████████████████</span><span class="o">|</span> <span class="mi">15</span><span class="o">/</span><span class="mi">15</span> <span class="p">[</span><span class="mi">04</span><span class="p">:</span><span class="mi">38</span><span class="o">&lt;</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">,</span> <span class="mf">18.57</span><span class="n">s</span><span class="o">/</span><span class="n">trial</span><span class="p">,</span> <span class="n">best</span> <span class="n">loss</span><span class="p">:</span> <span class="o">-</span> 
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="mf">0.9095000000000001</span><span class="p">]</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mf">11.0</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mf">0.821163568049807</span><span class="p">,</span> 
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mf">806.0</span><span class="p">}</span>
+</code></pre></div>
+<p>我们得到了比以前更好的准确度和一组可以使用的参数。请注意，最终结果中的标准是 1。这意味着选择了 1，即熵。 上述调整超参数的方法是最常见的，几乎适用于所有模型：线性回归、逻辑回归、基于树的方法、梯度提升模型（如 xgboost、lightgbm），甚至神经网络！</p>
+<p>虽然这些方法已经存在，但学习时必须从手动调整超参数开始，即手工调整。手动调整可以帮助你学习基础知识，例如，在梯度提升中，当你增加深度时，你应该降低学习率。如果使用自动工具，就无法学习到这一点。请参考下表，了解应如何调整。RS* 表示随机搜索应该更好。</p>
+<p>一旦你能更好地手动调整参数，你甚至可能不需要任何自动超参数调整。创建大型模型或引入大量特征时，也容易造成训练数据的过度拟合。为避免过度拟合，需要在训练数据特征中引入噪声或对代价函数进行惩罚。这种惩罚称为<strong>正则化</strong>，有助于泛化模型。在线性模型中，最常见的正则化类型是 L1 和 L2。L1 也称为 Lasso 回归，L2 称为 Ridge 回归。说到神经网络，我们会使用dropout、添加增强、噪声等方法对模型进行正则化。利用超参数优化，还可以找到正确的惩罚方法。</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Optimize</th>
+<th>Range of values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear Regression</td>
+<td>- fit_intercept<br /> - normalize</td>
+<td>- True/False<br /> - True/False</td>
+</tr>
+<tr>
+<td>Ridge</td>
+<td>- alpha<br /> - fit_intercept<br /> - normalize</td>
+<td>- 0.01, 0.1, 1.0, 10, 100<br /> - True/False<br /> - True/False</td>
+</tr>
+<tr>
+<td>k-neighbors</td>
+<td>- n_neighbors<br /> - p</td>
+<td>- 2, 4, 8, 16, ...<br /> - 2, 3, ...</td>
+</tr>
+<tr>
+<td>SVM</td>
+<td>- C<br /> - gamma<br /> - class_weight</td>
+<td>- 0.001, 0.01, ...,10, 100, 1000<br /> - 'auto', RS*<br /> - 'balanced', None</td>
+</tr>
+<tr>
+<td>Logistic Regression</td>
+<td>- Penalyt<br /> - C</td>
+<td>- L1 or L2<br /> - 0.001, 0.01, ..., 10, ..., 100</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>- Alpha<br /> - Normalize</td>
+<td>- 0.1, 1.0, 10<br /> - True/False</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>- n_estimators<br/> - max_depth<br/> -  min_samples_split <br/> -  min_samples_leaf <br/> -  max features</td>
+<td>- 120, 300, 500, 800, 1200<br /> - 5, 8, 15, 25, 30, None<br /> - 1, 2, 5, 10, 15, 100<br /> - log2, sqrt, None</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>- eta<br/> - gamma<br/> -  max_depth<br/> -  min_child_weight<br/> -  subsample<br/> -  colsample_bytree<br/> -  lambda<br/> -   alpha</td>
+<td>- 0.01, 0.015, 0.025, 0.05, 0.1<br /> - 0.05, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0<br /> - 3, 5, 7, 9, 12, 15, 17, 25<br /> - 1, 3, 5, 7<br /> - 0.6, 0.7, 0.8, 0.9, 1.0<br /> - 0.6, 0.7, 0.8, 0.9, 1.0<br /> - 0.01, 0.1, 1.0, RS<em><br /> - 0, 0.1, 0.5, 1.0, RS</em></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 特征选择" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              特征选择
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1434 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>评估指标 - AAAMLP 中译版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AAAMLP 中译版" class="md-header__button md-logo" aria-label="AAAMLP 中译版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAAMLP 中译版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              评估指标
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="deep-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/ytzfhqs/AAAMLP-CN" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytzfhqs/AAAMLP-CN
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AAAMLP 中译版" class="md-nav__button md-logo" aria-label="AAAMLP 中译版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    AAAMLP 中译版
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ytzfhqs/AAAMLP-CN" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytzfhqs/AAAMLP-CN
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%A4%E5%8F%89%E6%A3%80%E9%AA%8C/" class="md-nav__link">
+        交叉检验
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        评估指标
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BB%84%E7%BB%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/" class="md-nav__link">
+        组织机器学习项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%84%E7%90%86%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        处理分类变量
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        特征工程
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        特征选择
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B6%85%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        超参数优化
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ytzfhqs/AAAMLP-CN/edit/master/docs/评估指标.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">评估指标</h1>
+<p>说到机器学习问题，你会在现实世界中遇到很多不同类型的指标。有时，人们甚至会根据业务问题创建度量标准。逐一介绍和解释每一种度量类型超出了本书的范围。相反，我们将介绍一些最常见的度量标准，供你在最初的几个项目中使用。</p>
+<p>在本书的开头，我们介绍了监督学习和非监督学习。虽然无监督学习可以使用一些指标，但我们将只关注有监督学习。这是因为有监督问题比无监督问题多，而且对无监督方法的评估相当主观。</p>
+<p>如果我们谈论分类问题，最常用的指标是：</p>
+<ul>
+<li>准确率（Accuracy）</li>
+<li>精确率（P）</li>
+<li>召回率（R）</li>
+<li>F1 分数（F1）</li>
+<li>AUC（AUC）</li>
+<li>对数损失（Log loss）</li>
+<li>k 精确率（P@k）</li>
+<li>k 平均精率（AP@k）</li>
+<li>k 均值平均精确率（MAP@k）</li>
+</ul>
+<p>说到回归，最常用的评价指标是 
+- 平均绝对误差 （MAE）
+- 均方误差 （MSE）
+- 均方根误差 （RMSE）
+- 均方根对数误差 （RMSLE） 
+- 平均百分比误差 （MPE）
+- 平均绝对百分比误差 （MAPE） 
+- R2</p>
+<p>了解上述指标的工作原理并不是我们必须了解的唯一事情。我们还必须知道何时使用哪些指标，而这取决于你有什么样的数据和目标。我认为这与目标有关，而与数据无关。</p>
+<p>要进一步了解这些指标，让我们从一个简单的问题开始。假设我们有一个<strong>二元分类</strong>问题，即只有两个目标的问题，假设这是一个胸部 X 光图像分类问题。有的胸部 X 光图像没有问题，而有的胸部 X 光图像有肺塌陷，也就是所谓的气胸。因此，我们的任务是建立一个分类器，在给定胸部 X 光图像的情况下，它能检测出图像是否有气胸。</p>
+<p><img alt="" src="figures\AAAMLP_page30_image.png" /></p>
+<p align="center"><b>图 1：气胸肺部图像</b> </p>
+
+<p>我们还假设有相同数量的气胸和非气胸胸部 X 光图像，比如各 100 张。因此，我们有 100 张阳性样本和 100 张阴性样本，共计 200 张图像。</p>
+<p>第一步是将上述数据分为两组，每组 100 张图像，即训练集和验证集。在这两个集合中，我们都有 50 个正样本和 50 个负样本。</p>
+<p>在二元分类指标中，当正负样本数量相等时，我们通常使用准确率、精确率、召回率和 F1。</p>
+<p><strong>准确率</strong>：这是机器学习中最直接的指标之一。它定义了模型的准确度。对于上述问题，如果你建立的模型能准确分类 90 张图片，那么你的准确率就是 90% 或 0.90。如果只有 83 幅图像被正确分类，那么模型的准确率就是 83% 或 0.83。</p>
+<p>计算准确率的 Python 代码也非常简单。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span> <span class="nf">accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="c1"># 为正确预测数初始化一个简单计数器</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">correct_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="c1"># 遍历y_true，y_pred中所有元素</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="k">if</span> <span class="n">yt</span> <span class="o">==</span> <span class="n">yp</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="c1"># 如果预测标签与真实标签相同，则增加计数器</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="n">correct_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="c1"># 返回正确率，正确标签数/总标签数</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">return</span> <span class="n">correct_counter</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+</code></pre></div>
+<p>我们还可以使用 scikit-learn 计算准确率。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.625</span>
+</code></pre></div>
+<p>现在，假设我们把数据集稍微改动一下，有 180 张没有气胸的胸部 X 光图像，只有 20 张有气胸。即使在这种情况下，我们也要创建正负（气胸与非气胸）目标比例相同的训练集和验证集。在每一组中，我们有 90 张非气胸图像和 10 张气胸图像。如果说验证集中的所有图像都是非气胸图像，那么您的准确率会是多少呢？让我们来看看；您对 90% 的图像进行了正确分类。因此，您的准确率是 90%。</p>
+<p>但请再看一遍。</p>
+<p>你甚至没有建立一个模型，就得到了 90% 的准确率。这似乎有点没用。如果我们仔细观察，就会发现数据集是偏斜的，也就是说，一个类别中的样本数量比另一个类别中的样本数量多很多。在这种情况下，使用准确率作为评估指标是不可取的，因为它不能代表数据。因此，您可能会获得很高的准确率，但您的模型在实际样本中的表现可能并不理想，而且您也无法向经理解释原因。</p>
+<p>在这种情况下，最好还是看看<strong>精确率</strong>等其他指标。</p>
+<p>在学习精确率之前，我们需要了解一些术语。在这里，我们假设有气胸的胸部 X 光图像为正类 (1)，没有气胸的为负类 (0)。</p>
+<p><strong>真阳性 （TP）</strong>：  给定一幅图像，如果您的模型预测该图像有气胸，而该图像的实际目标有气胸，则视为真阳性。</p>
+<p><strong>真阴性 （TN）</strong>： 给定一幅图像，如果您的模型预测该图像没有气胸，而实际目标显示该图像没有气胸，则视为真阴性。</p>
+<p>简单地说，如果您的模型正确预测了阳性类别，它就是真阳性；如果您的模型准确预测了阴性类别，它就是真阴性。</p>
+<p><strong>假阳性 （FP）</strong>：给定一张图像，如果您的模型预测为气胸，而该图像的实际目标是非气胸，则为假阳性。</p>
+<p><strong>假阴性 （FN）</strong>： 给定一幅图像，如果您的模型预测为非气胸，而该图像的实际目标是气胸，则为假阴性。</p>
+<p>简单地说，如果您的模型错误地（或虚假地）预测了阳性类，那么它就是假阳性。如果模型错误地（或虚假地）预测了阴性类别，则是假阴性。</p>
+<p>让我们逐一看看这些实现。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">true_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="c1"># 初始化真阳性样本计数器</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">tp</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># 遍历y_true，y_pred中所有元素</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="c1"># 若真实标签为正类且预测标签也为正类，计数器增加</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="k">if</span> <span class="n">yt</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">yp</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="n">tp</span> <span class="o">+=</span> <span class="mi">1</span> 
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="c1"># 返回真阳性样本数</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">return</span> <span class="n">tp</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">def</span> <span class="nf">true_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="c1"># 初始化真阴性样本计数器</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">tn</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="c1"># 遍历y_true，y_pred中所有元素</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>         <span class="c1"># 若真实标签为负类且预测标签也为负类，计数器增加</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="k">if</span> <span class="n">yt</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">yp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="n">tn</span> <span class="o">+=</span> <span class="mi">1</span> 
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="c1"># 返回真阴性样本数</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="k">return</span> <span class="n">tn</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="k">def</span> <span class="nf">false_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="c1"># 初始化假阳性计数器</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="n">fp</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="c1"># 遍历y_true，y_pred中所有元素</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>        <span class="c1"># 若真实标签为负类而预测标签为正类，计数器增加</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="k">if</span> <span class="n">yt</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">yp</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>            <span class="n">fp</span> <span class="o">+=</span> <span class="mi">1</span> 
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    <span class="c1"># 返回假阳性样本数</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="k">return</span> <span class="n">fp</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="k">def</span> <span class="nf">false_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>    <span class="c1"># 初始化假阴性计数器</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="n">fn</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="c1"># 遍历y_true，y_pred中所有元素</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="c1"># 若真实标签为正类而预测标签为负类，计数器增加</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="k">if</span> <span class="n">yt</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">yp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>            <span class="n">fn</span> <span class="o">+=</span> <span class="mi">1</span> 
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>    <span class="c1"># 返回假阴性数</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>    <span class="k">return</span> <span class="n">fn</span>
+</code></pre></div>
+<p>我在这里实现这些功能的方法非常简单，而且只适用于二元分类。让我们检查一下这些函数。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mi">2</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> 
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mi">1</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">false_negative</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> 
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mi">2</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">true_negative</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> 
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mi">3</span>
+</code></pre></div>
+<p>如果我们必须用上述术语来定义精确率，我们可以写为：
+$$
+Accuracy Score = (TP + TN)/(TP + TN + FP +FN)
+$$
+现在，我们可以在 python 中使用 TP、TN、FP 和 FN 快速实现准确度得分。我们将其称为 accuracy_v2。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span> <span class="nf">accuracy_v2</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="c1"># 假阴性样本数</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">fn</span> <span class="o">=</span> <span class="n">false_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="c1"># 真阴性样本数</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">tn</span> <span class="o">=</span> <span class="n">true_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="c1"># 准确率</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">accuracy_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">tn</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">tn</span> <span class="o">+</span> <span class="n">fp</span> <span class="o">+</span> <span class="n">fn</span><span class="p">)</span> 
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">return</span> <span class="n">accuracy_score</span>
+</code></pre></div>
+<p>我们可以通过与之前的实现和 scikit-learn 版本进行比较，快速检查该函数的正确性。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> 
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.625</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">accuracy_v2</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> 
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.625</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> 
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.625</span>
+</code></pre></div>
+<p>请注意，在这段代码中，metrics.accuracy_score 来自 scikit-learn。</p>
+<p>很好。所有值都匹配。这说明我们在实现过程中没有犯任何错误。</p>
+<p>现在，我们可以转向其他重要指标。</p>
+<p>首先是精确率。精确率的定义是
+$$
+Precision = TP/(TP + FP)
+$$
+假设我们在新的偏斜数据集上建立了一个新模型，我们的模型正确识别了 90 张图像中的 80 张非气胸图像和 10 张图像中的 8 张气胸图像。因此，我们成功识别了 100 张图像中的 88 张。因此，准确率为 0.88 或 88%。</p>
+<p>但是，在这 100 张样本中，有 10 张非气胸图像被误判为气胸，2 张气胸图像被误判为非气胸。</p>
+<p>因此，我们有
+- TP : 8 
+- TN: 80 
+- FP: 10 
+- FN: 2</p>
+<p>精确率为 8 / (8 + 10) = 0.444。这意味着我们的模型在识别阳性样本（气胸）时有 44.4% 的正确率。</p>
+<p>现在，既然我们已经实现了 TP、TN、FP 和 FN，我们就可以很容易地在 python 中实现精确率了。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="c1"># 精确率</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">precision</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="k">return</span> <span class="n">precision</span>
+</code></pre></div>
+<p>让我们试试这种精确率的实现方式。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">precision</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> 
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.6666666666666666</span>
+</code></pre></div>
+<p>这似乎没有问题。 接下来，我们来看<strong>召回率</strong>。召回率的定义是：
+$$
+Recall = TP/(TP + FN)
+$$
+在上述情况下，召回率为 8 / (8 + 2) = 0.80。这意味着我们的模型正确识别了 80% 的阳性样本。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span> <span class="nf">recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="c1"># 假阴性样本数</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">fn</span> <span class="o">=</span> <span class="n">false_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="c1"># 召回率</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">recall</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="k">return</span> <span class="n">recall</span>
+</code></pre></div>
+<p>就我们的两个小列表而言，召回率应该是 0.5。让我们检查一下。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>   <span class="o">...</span><span class="p">:</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> 
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">recall</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.5</span>
+</code></pre></div>
+<p>这与我们的计算值相符！</p>
+<p>对于一个 "好 "模型来说，精确率和召回值都应该很高。我们看到，在上面的例子中，召回值相当高。但是，精确率却很低！我们的模型产生了大量的误报，但误报较少。在这类问题中，假阴性较少是好事，因为你不想在病人有气胸的情况下却说他们没有气胸。这样做会造成更大的伤害。但我们也有很多假阳性结果，这也不是好事。</p>
+<p>大多数模型都会预测一个概率，当我们预测时，通常会将这个阈值选为 0.5。这个阈值并不总是理想的，根据这个阈值，精确率和召回率的值可能会发生很大的变化。如果我们选择的每个阈值都能计算出精确率和召回率，那么我们就可以在这些值之间绘制出曲线图。这幅图或曲线被称为 "精确率-召回率曲线"。</p>
+<p>在研究精确率-调用曲线之前，我们先假设有两个列表。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.02638412</span><span class="p">,</span> <span class="mf">0.11114267</span><span class="p">,</span> <span class="mf">0.31620708</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.0490937</span><span class="p">,</span> <span class="mf">0.0191491</span><span class="p">,</span> <span class="mf">0.17554844</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.15952202</span><span class="p">,</span> <span class="mf">0.03819563</span><span class="p">,</span> <span class="mf">0.11639273</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.079377</span><span class="p">,</span>  <span class="mf">0.08584789</span><span class="p">,</span> <span class="mf">0.39095342</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.27259048</span><span class="p">,</span> <span class="mf">0.03447096</span><span class="p">,</span> <span class="mf">0.04644807</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.03543574</span><span class="p">,</span> <span class="mf">0.18521942</span><span class="p">,</span> <span class="mf">0.05934905</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.61977213</span><span class="p">,</span> <span class="mf">0.33056815</span><span class="p">]</span>
+</code></pre></div>
+<p>因此，y_true 是我们的目标值，而 y_pred 是样本被赋值为 1 的概率值。因此，现在我们要看的是预测中的概率，而不是预测值（大多数情况下，预测值的计算阈值为 0.5）。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">precisions</span> <span class="o">=</span> <span class="p">[]</span> 
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">recalls</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0490937</span> <span class="p">,</span> <span class="mf">0.05934905</span><span class="p">,</span> <span class="mf">0.079377</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>              <span class="mf">0.08584789</span><span class="p">,</span> <span class="mf">0.11114267</span><span class="p">,</span> <span class="mf">0.11639273</span><span class="p">,</span> 
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>              <span class="mf">0.15952202</span><span class="p">,</span> <span class="mf">0.17554844</span><span class="p">,</span> <span class="mf">0.18521942</span><span class="p">,</span> 
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>              <span class="mf">0.27259048</span><span class="p">,</span> <span class="mf">0.31620708</span><span class="p">,</span> <span class="mf">0.33056815</span><span class="p">,</span> 
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>              <span class="mf">0.39095342</span><span class="p">,</span> <span class="mf">0.61977213</span><span class="p">]</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># 遍历预测阈值</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="c1"># 若样本为正类（1）的概率大于阈值，为1，否则为0</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">temp_prediction</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">i</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="c1"># 计算精确率</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">temp_prediction</span><span class="p">)</span> 
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="c1"># 计算召回率</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">temp_prediction</span><span class="p">)</span> 
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="c1"># 加入精确率列表</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>    <span class="n">precisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>    <span class="c1"># 加入召回率列表</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>    <span class="n">recalls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+<p>现在，我们可以绘制精确率-召回率曲线。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 创建画布</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># x轴为召回率，y轴为精确率</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">recalls</span><span class="p">,</span> <span class="n">precisions</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># 添加x轴标签，字体大小为15</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Recall&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># 添加y轴标签，字条大小为15</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precision&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</code></pre></div>
+<p>图 2 显示了我们通过这种方法得到的精确率-召回率曲线。</p>
+<p><img alt="" src="figures\AAAMLP_page39_image.png" /></p>
+<p align="center"><b>图 2：精确率-召回率曲线</b> </p>
+
+<p>这条<strong>精确率-召回率曲线</strong>与您在互联网上看到的曲线截然不同。这是因为我们只有 20 个样本，其中只有 3 个是阳性样本。但这没什么好担心的。这还是那条精确率-召回曲线。</p>
+<p>你会发现，选择一个既能提供良好精确率又能提供召回值的阈值是很有挑战性的。如果阈值过高，真阳性的数量就会减少，而假阴性的数量就会增加。这会降低召回率，但精确率得分会很高。如果将阈值降得太低，则误报会大量增加，精确率也会降低。</p>
+<p>精确率和召回率的范围都是从 0 到 1，越接近 1 越好。</p>
+<p>F1 分数是精确率和召回率的综合指标。它被定义为精确率和召回率的简单加权平均值（调和平均值）。如果我们用 P 表示精确率，用 R 表示召回率，那么 F1 分数可以表示为：
+$$
+F1 = 2PR/(P + R)
+$$
+根据 TP、FP 和 FN，稍加数学计算就能得出以下 F1 等式：
+$$
+F1 = 2TP/(2TP + FP + FN)
+$$
+Python 实现很简单，因为我们已经实现了这些</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="c1"># 计算精确率</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="c1"># 计算召回率</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="c1"># 计算f1值</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">score</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> 
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="k">return</span> <span class="n">score</span>
+</code></pre></div>
+<p>让我们看看其结果，并与 scikit-learn 进行比较。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> 
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">f1</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.5714285714285715</span>
+</code></pre></div>
+<p>通过 scikit learn，我们可以得到相同的列表：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.5714285714285715</span>
+</code></pre></div>
+<p>与其单独看精确率和召回率，您还可以只看 F1 分数。与精确率、召回率和准确度一样，F1 分数的范围也是从 0 到 1，完美预测模型的 F1 分数为 1。</p>
+<p>此外，我们还应该了解其他一些关键术语。</p>
+<p>第一个术语是 TPR 或真阳性率（True Positive Rate），它与召回率相同。
+$$
+TPR = TP/(TP + FN)
+$$
+尽管它与召回率相同，但我们将为它创建一个 python 函数，以便今后使用这个名称。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span> <span class="nf">tpr</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="c1"># 真阳性率（TPR），与召回率计算公式一致</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="k">return</span> <span class="n">recall</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</code></pre></div>
+<p>TPR 或召回率也被称为灵敏度。</p>
+<p>而 FPR 或假阳性率（False Positive Rate）的定义是：
+$$
+FPR = FP / (TN + FP)
+$$</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span> <span class="nf">fpr</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="c1"># 真阴性样本数</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">tn</span> <span class="o">=</span> <span class="n">true_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># 返回假阳性率（FPR）</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">return</span> <span class="n">fp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tn</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+</code></pre></div>
+<p>1 - FPR 被称为特异性或真阴性率或 TNR。这些术语很多，但其中最重要的只有 TPR 和 FPR。假设我们只有 15 个样本，其目标值为二元：</p>
+<p>Actual targets : [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1]</p>
+<p>我们训练一个类似随机森林的模型，就能得到样本呈阳性的概率。</p>
+<p>Predicted probabilities for 1: [0.1, 0.3, 0.2, 0.6, 0.8, 0.05, 0.9, 0.5, 0.3, 0.66, 0.3, 0.2, 0.85, 0.15, 0.99]</p>
+<p>对于 &gt;= 0.5 的典型阈值，我们可以评估上述所有精确率、召回率/TPR、F1 和 FPR 值。但是，如果我们将阈值选为 0.4 或 0.6，也可以做到这一点。事实上，我们可以选择 0 到 1 之间的任何值，并计算上述所有指标。</p>
+<p>不过，我们只计算两个值： TPR 和 FPR。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># 初始化真阳性率列表</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">tpr_list</span> <span class="o">=</span> <span class="p">[]</span> 
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># 初始化假阳性率列表</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">fpr_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># 真实样本标签</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>          <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1"># 预测样本为正类（1）的概率</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>          <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>          <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="c1"># 预测阈值</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="n">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>              <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="c1"># 遍历预测阈值</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="k">for</span> <span class="n">thresh</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>    <span class="c1"># 若样本为正类（1）的概率大于阈值，为1，否则为0</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>    <span class="n">temp_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">thresh</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span> 
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>    <span class="c1"># 真阳性率</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>    <span class="n">temp_tpr</span> <span class="o">=</span> <span class="n">tpr</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>    <span class="c1"># 假阳性率</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>    <span class="n">temp_fpr</span> <span class="o">=</span> <span class="n">fpr</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>    <span class="c1"># 将真阳性率加入列表</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>    <span class="n">tpr_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_tpr</span><span class="p">)</span> 
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>    <span class="c1"># 将假阳性率加入列表</span>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>    <span class="n">fpr_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_fpr</span><span class="p">)</span>
+</code></pre></div>
+<p>因此，我们可以得到每个阈值的 TPR 值和 FPR 值。</p>
+<p><img alt="" src="figures\AAAMLP_page43_image.png" /></p>
+<p align="center"><b>图 3：阈值、TPR 和 FPR 值表</b> </p>
+
+<p>如果我们绘制如图 3 所示的表格，即以 TPR 为 Y 轴，FPR 为 X 轴，就会得到如图 4 所示的曲线。</p>
+<p><img alt="" src="figures\AAAMLP_page44_image.png" /></p>
+<p align="center"><b>图 4：ROC曲线</b> </p>
+
+<p>这条曲线也被称为ROC曲线。如果我们计算这条 ROC 曲线下的面积，就是在计算另一个指标，当数据集的二元目标偏斜时，这个指标就会非常常用。</p>
+<p>这个指标被称为 ROC 曲线下面积或曲线下面积，简称 AUC。计算 ROC 曲线下面积的方法有很多。在此，我们将采用 scikit- learn 的奇妙实现方法。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> 
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.8300000000000001</span>
+</code></pre></div>
+<p>AUC 值从 0 到 1 不等。
+- AUC = 1 意味着您拥有一个完美的模型。大多数情况下，这意味着你在验证时犯了一些错误，应该重新审视数据处理和验证流程。如果你没有犯任何错误，那么恭喜你，你已经拥有了针对数据集建立的最佳模型。
+- AUC = 0 意味着您的模型非常糟糕（或非常好！）。试着反转预测的概率，例如，如果您预测正类的概率是 p，试着用 1-p 代替它。这种 AUC 也可能意味着您的验证或数据处理存在问题。
+- AUC = 0.5 意味着你的预测是随机的。因此，对于任何二元分类问题，如果我将所有目标都预测为 0.5，我将得到 0.5 的 AUC。</p>
+<p>AUC 值介于 0 和 0.5 之间，意味着你的模型比随机模型更差。大多数情况下，这是因为你颠倒了类别。 如果您尝试反转预测，您的 AUC 值可能会超过 0.5。接近 1 的 AUC 值被认为是好值。</p>
+<p>但 AUC 对我们的模型有什么影响呢？</p>
+<p>假设您建立了一个从胸部 X 光图像中检测气胸的模型，其 AUC 值为 0.85。这意味着，如果您从数据集中随机选择一张有气胸的图像（阳性样本）和另一张没有气胸的图像（阴性样本），那么气胸图像的排名将高于非气胸图像，概率为 0.85。</p>
+<p>计算概率和 AUC 后，您需要对测试集进行预测。根据问题和使用情况，您可能需要概率或实际类别。如果你想要概率，这并不难。如果您想要类别，则需要选择一个阈值。在二元分类的情况下，您可以采用类似下面的方法。
+$$
+Prediction = Probability &gt;= Threshold
+$$
+也就是说，预测是一个只包含二元变量的新列表。如果概率大于或等于给定的阈值，则预测中的一项为 1，否则为 0。</p>
+<p>你猜怎么着，你可以使用 ROC 曲线来选择这个阈值！ROC 曲线会告诉您阈值对假阳性率和真阳性率的影响，进而影响假阳性和真阳性。您应该选择最适合您的问题和数据集的阈值。</p>
+<p>例如，如果您不希望有太多的误报，那么阈值就应该高一些。不过，这也会带来更多的误报。注意权衡利弊，选择最佳阈值。让我们看看这些阈值如何影响真阳性和假阳性值。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 真阳性样本数列表</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">tp_list</span> <span class="o">=</span> <span class="p">[]</span> 
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># 假阳性样本数列表</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">fp_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># 真实标签</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>          <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1"># 预测样本为正类（1）的概率</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>          <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>          <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="c1"># 预测阈值</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="n">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>              <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="c1"># 遍历预测阈值</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="k">for</span> <span class="n">thresh</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>    <span class="c1"># 若样本为正类（1）的概率大于阈值，为1，否则为0</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>    <span class="n">temp_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">thresh</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span> 
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>    <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>    <span class="n">temp_tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>    <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>    <span class="n">temp_fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>    <span class="c1"># 加入真阳性样本数列表</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>    <span class="n">tp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_tp</span><span class="p">)</span> 
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>    <span class="c1"># 加入假阳性样本数列表</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>    <span class="n">fp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_fp</span><span class="p">)</span>
+</code></pre></div>
+<p>利用这一点，我们可以创建一个表格，如图 5 所示。</p>
+<p><img alt="" src="figures\AAAMLP_page47_image.png" /></p>
+<p align="center"><b>图 5：不同阈值的 TP 值和 FP 值</b> </p>
+
+<p>如图 6 所示，大多数情况下，ROC 曲线左上角的值应该是一个相当不错的阈值。</p>
+<p>对比表格和 ROC 曲线，我们可以发现，0.6 左右的阈值相当不错，既不会丢失大量的真阳性结果，也不会出现大量的假阳性结果。</p>
+<p><img alt="" src="figures\AAAMLP_page48_image.png" /></p>
+<p align="center"><b>图 6：从 ROC 曲线最左侧的顶点选择最佳阈值</b> </p>
+
+<p>AUC 是业内广泛应用于偏斜二元分类任务的指标，也是每个人都应该了解的指标。一旦理解了 AUC 背后的理念（如上文所述），也就很容易向业界可能会评估您的模型的非技术人员解释它了。</p>
+<p>学习 AUC 后，你应该学习的另一个重要指标是对数损失。对于二元分类问题，我们将对数损失定义为：
+$$
+LogLoss = -1.0 \times (target \times log(prediction) + (1-target) \times log(1-prediction))
+$$
+其中，目标值为0或1，预测值为样本属于类别 1 的概率。</p>
+<p>对于数据集中的多个样本，所有样本的对数损失只是所有单个对数损失的平均值。需要记住的一点是，对数损失会对不正确或偏差较大的预测进行相当高的惩罚，也就是说，对数损失会对非常确定和非常错误的预测进行惩罚。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">def</span> <span class="nf">log_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">):</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="c1"># 极小值，防止0做分母</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-15</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="c1"># 对数损失列表</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="n">loss</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="c1"># 遍历y_true，y_pred中所有元素</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">):</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>        <span class="c1"># 限制yp范围，最小为epsilon，最大为1-epsilon</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>        <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">yp</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span> 
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>        <span class="c1"># 计算对数损失</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>        <span class="n">temp_loss</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">yt</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">yp</span><span class="p">)</span><span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">yt</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">yp</span><span class="p">))</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>        <span class="c1"># 加入对数损失列表</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>        <span class="n">loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_loss</span><span class="p">)</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</code></pre></div>
+<p>让我们测试一下函数执行情况：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_proba</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>   <span class="o">...</span><span class="p">:</span>          <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span> 
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.49882711861432294</span>
+</code></pre></div>
+<p>我们可以将其与 scikit-learn 进行比较：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">log_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span> 
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.49882711861432294</span>
+</code></pre></div>
+<p>因此，我们的实现是正确的。 对数损失的实现很容易。解释起来似乎有点困难。你必须记住，对数损失的惩罚要比其他指标大得多。</p>
+<p>例如，如果您有 51% 的把握认为样本属于第 1 类，那么对数损失就是：
+$$
+-1.0 \times (1 \times log(0.51) + (1 - 1) \times log(1 - 0.51))=0.67
+$$
+如果你对属于 0 类的样本有 49% 的把握，对数损失就是：
+$$
+-1.0 \times (1 \times log(0.49) + (1 - 1) \times log(1 - 0.49))=0.67
+$$
+因此，即使我们可以选择 0.5 的截断值并得到完美的预测结果，我们仍然会有非常高的对数损失。因此，在处理对数损失时，你需要非常小心；任何不确定的预测都会产生非常高的对数损失。</p>
+<p>我们之前讨论过的大多数指标都可以转换成多类版本。这个想法很简单。以精确率和召回率为例。我们可以计算多类分类问题中每一类的精确率和召回率。</p>
+<p>有三种不同的计算方法，有时可能会令人困惑。假设我们首先对精确率感兴趣。我们知道，精确率取决于真阳性和假阳性。</p>
+<ul>
+<li><strong>宏观平均精确率</strong>（Macro averaged precision）：分别计算所有类别的精确率然后求平均值</li>
+<li><strong>微观平均精确率</strong>（Micro averaged precision）：按类计算真阳性和假阳性，然后用其计算总体精确率。然后以此计算总体精确率</li>
+<li><strong>加权精确率</strong>（Weighted precision）：与宏观精确率相同，但这里是加权平均精确率 取决于每个类别中的项目数</li>
+</ul>
+<p>这看似复杂，但在 python 实现中很容易理解。让我们看看宏观平均精确率是如何实现的。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">def</span> <span class="nf">macro_precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="c1"># 种类数</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="c1"># 初始化精确率</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="c1"># 遍历0~（种类数-1）</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    <span class="k">for</span> <span class="n">class_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>        <span class="c1"># 若真实标签为class_为1，否则为0</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>        <span class="n">temp_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_true</span><span class="p">]</span> 
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>        <span class="c1"># 如预测标签为class_为1，否则为0</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>        <span class="n">temp_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>        <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>        <span class="n">tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>        <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>        <span class="n">fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>        <span class="c1"># 计算精确度</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>        <span class="n">temp_precision</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        <span class="c1"># 各类精确率相加</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>        <span class="n">precision</span> <span class="o">+=</span> <span class="n">temp_precision</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>    <span class="c1"># 计算平均值</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>    <span class="n">precision</span> <span class="o">/=</span> <span class="n">num_classes</span> 
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>    <span class="k">return</span> <span class="n">precision</span>
+</code></pre></div>
+<p>你会发现这并不难。同样，我们还有微平均精确率分数。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">def</span> <span class="nf">micro_precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="c1"># 种类数</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="c1"># 初始化真阳性样本数</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    <span class="n">tp</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="c1"># 初始化假阳性样本数</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="n">fp</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>    <span class="c1"># 遍历0~（种类数-1）</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="k">for</span> <span class="n">class_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>        <span class="c1"># 若真实标签为class_为1，否则为0</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>        <span class="n">temp_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_true</span><span class="p">]</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>        <span class="c1"># 若预测标签为class_为1，否则为0</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>        <span class="n">temp_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>        <span class="c1"># 真阳性样本数相加</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>        <span class="n">tp</span> <span class="o">+=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>        <span class="c1"># 假阳性样本数相加</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>        <span class="n">fp</span> <span class="o">+=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>    <span class="c1"># 精确率</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a>    <span class="n">precision</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span> 
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>    <span class="k">return</span> <span class="n">precision</span>
+</code></pre></div>
+<p>这也不难。那什么难？什么都不难。机器学习很简单。现在，让我们来看看加权精确率的实现。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">def</span> <span class="nf">weighted_precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="c1"># 种类数</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="c1"># 统计各种类样本数</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="n">class_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="c1"># 初始化精确率</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    <span class="c1"># 遍历0~（种类数-1）</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>    <span class="k">for</span> <span class="n">class_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>        <span class="c1"># 若真实标签为class_为1，否则为0</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>        <span class="n">temp_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_true</span><span class="p">]</span> 
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>        <span class="c1"># 若预测标签为class_为1，否则为0</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>        <span class="n">temp_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>        <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>        <span class="n">tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span> 
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>        <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>        <span class="n">fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>        <span class="c1"># 精确率</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>        <span class="n">temp_precision</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>        <span class="c1"># 根据该种类样本数分配权重</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>        <span class="n">weighted_precision</span> <span class="o">=</span> <span class="n">class_counts</span><span class="p">[</span><span class="n">class_</span><span class="p">]</span> <span class="o">*</span> <span class="n">temp_precision</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a>        <span class="c1"># 加权精确率求和</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>        <span class="n">precision</span> <span class="o">+=</span> <span class="n">weighted_precision</span>
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a>    <span class="c1"># 计算平均精确率</span>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>    <span class="n">overall_precision</span> <span class="o">=</span> <span class="n">precision</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a>    <span class="k">return</span> <span class="n">overall_precision</span>
+</code></pre></div>
+<p>将我们的实现与 scikit-learn 进行比较，以了解实现是否正确。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">macro_precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.3611111111111111</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span> 
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.3611111111111111</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">micro_precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.4444444444444444</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;micro&quot;</span><span class="p">)</span> 
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.4444444444444444</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">weighted_precision</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.39814814814814814</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;weighted&quot;</span><span class="p">)</span> 
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.39814814814814814</span>
+</code></pre></div>
+<p>看来我们已经正确地实现了一切。 请注意，这里展示的实现可能不是最有效的，但却是最容易理解的。</p>
+<p>同样，我们也可以实现<strong>多类别的召回率指标</strong>。精确率和召回率取决于真阳性、假阳性和假阴性，而 F1 则取决于精确率和召回率。</p>
+<p>召回率的实现方法留待读者练习，这里实现的是多类 F1 的一个版本，即加权平均值。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">def</span> <span class="nf">weighted_f1</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="c1"># 种类数</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="c1"># 统计各种类样本数</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>    <span class="n">class_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="c1"># 初始化F1值</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="n">f1</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="c1"># 遍历0~（种类数-1）</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="k">for</span> <span class="n">class_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>        <span class="c1"># 若真实标签为class_为1，否则为0</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>        <span class="n">temp_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_true</span><span class="p">]</span> 
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>        <span class="c1"># 若预测标签为class_为1，否则为0</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>        <span class="n">temp_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">class_</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>        <span class="c1"># 计算精确率</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">precision</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span> 
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>        <span class="c1"># 计算召回率</span>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>        <span class="n">r</span> <span class="o">=</span> <span class="n">recall</span><span class="p">(</span><span class="n">temp_true</span><span class="p">,</span> <span class="n">temp_pred</span><span class="p">)</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>        <span class="c1"># 若精确率+召回率不为0，则使用公式计算F1值</span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>        <span class="k">if</span> <span class="n">p</span> <span class="o">+</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>            <span class="n">temp_f1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> 
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>        <span class="c1"># 否则直接为0</span>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a>            <span class="n">temp_f1</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>        <span class="c1"># 根据样本数分配权重</span>
+<a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>        <span class="n">weighted_f1</span> <span class="o">=</span> <span class="n">class_counts</span><span class="p">[</span><span class="n">class_</span><span class="p">]</span> <span class="o">*</span> <span class="n">temp_f1</span>
+<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>        <span class="c1"># 加权F1值相加</span>
+<a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a>        <span class="n">f1</span> <span class="o">+=</span> <span class="n">weighted_f1</span>
+<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>    <span class="c1"># 计算加权平均F1值</span>
+<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>    <span class="n">overall_f1</span> <span class="o">=</span> <span class="n">f1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span> 
+<a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a>    <span class="k">return</span> <span class="n">overall_f1</span>
+</code></pre></div>
+<p>请注意，上面有几行代码是新写的。因此，你应该仔细阅读这些代码。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">weighted_f1</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.41269841269841273</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;weighted&quot;</span><span class="p">)</span> 
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.41269841269841273</span>
+</code></pre></div>
+<p>因此，我们已经为多类问题实现了精确率、召回率和 F1。同样，您也可以将 AUC 和对数损失转换为多类格式。这种转换格式被称为 <strong>one-vs-all</strong>。这里我不打算实现它们，因为实现方法与我们已经讨论过的很相似。</p>
+<p>在二元或多类分类中，看一下<strong>混淆矩阵</strong>也很流行。不要困惑，这很简单。混淆矩阵只不过是一个包含 TP、FP、TN 和 FN 的表格。使用混淆矩阵，您可以快速查看有多少样本被错误分类，有多少样本被正确分类。也许有人会说，混淆矩阵应该在本章很早就讲到，但我没有这么做。如果了解了 TP、FP、TN、FN、精确率、召回率和 AUC，就很容易理解和解释混淆矩阵了。让我们看看图 7 中二元分类问题的混淆矩阵。</p>
+<p>我们可以看到，混淆矩阵由 TP、FP、FN 和 TN 组成。我们只需要这些值来计算精确率、召回率、F1 分数和 AUC。有时，人们也喜欢把 FP 称为<strong>第一类错误</strong>，把 FN 称为<strong>第二类错误</strong>。</p>
+<p><img alt="" src="figures\AAAMLP_page57_image.png" /></p>
+<p align="center"><b>图 7：二元分类任务的混淆矩阵</b> </p>
+
+<p>我们还可以将二元混淆矩阵扩展为多类混淆矩阵。它会是什么样子呢？如果我们有 N 个类别，它将是一个大小为 NxN 的矩阵。对于每个类别，我们都要计算相关类别和其他类别的样本总数。举个例子可以让我们更好地理解这一点。</p>
+<p>假设我们有以下真实标签：
+$$
+[0, 1, 2, 0, 1, 2, 0, 2, 2]
+$$
+我们的预测标签是：
+$$
+[0, 2, 1, 0, 2, 1, 0, 0, 2]
+$$
+那么，我们的混淆矩阵将如图 8 所示。</p>
+<p><img alt="" src="figures\AAAMLP_page58_image.png" /></p>
+<p align="center"><b>图 8：多分类问题的混淆矩阵</b> </p>
+
+<p>图 8 说明了什么？</p>
+<p>让我们来看看 0 类。我们看到，在真实标签中，有 3 个样本属于 0 类。然而，在预测中，我们有 3 个样本属于第 0 类，1 个样本属于第 1 类。理想情况下，对于真实标签中的类别 0，预测标签 1 和 2 应该没有任何样本。让我们看看类别 2。在真实标签中，这个数字加起来是 4，而在预测标签中，这个数字加起来是 3。</p>
+<p>一个完美的混淆矩阵只能从左到右斜向填充。</p>
+<p><strong>混淆矩阵</strong>提供了一种简单的方法来计算我们之前讨论过的不同指标。Scikit-learn 提供了一种简单直接的方法来生成混淆矩阵。请注意，我在图 8 中显示的混淆矩阵是 scikit-learn 混淆矩阵的转置，原始版本可以通过以下代码绘制。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1"># 真实样本标签</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># 预测样本标签</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="c1"># 计算混淆矩阵</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="c1"># 创建画布</span>
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="c1"># 创建方格</span>
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">light</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dark</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="c1"># 规定字体大小</span>
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a><span class="c1"># 绘制热图</span>
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="c1"># y轴标签，字体大小为20</span>
+<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Actual Labels&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+<a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a><span class="c1"># x轴标签，字体大小为20</span>
+<a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Labels&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+<p>因此，到目前为止，我们已经解决了二元分类和多类分类的度量问题。接下来，我们将讨论另一种类型的分类问题，即多标签分类。在多标签分类中，每个样本都可能与一个或多个类别相关联。这类问题的一个简单例子就是要求你预测给定图像中的不同物体。</p>
+<p>图 9 显示了一个著名数据集的图像示例。请注意，该数据集的目标有所不同，但我们暂且不去讨论它。我们假设其目的只是预测图像中是否存在某个物体。在图 9 中，我们有椅子、花盆、窗户，但没有其他物体，如电脑、床、电视等。因此，一幅图像可能有多个相关目标。这类问题就是多标签分类问题。</p>
+<p><img alt="" src="figures\AAAMLP_page59_image.png" /></p>
+<p align="center"><b>图 9：图像中的不同物体</b> </p>
+
+<p>这类分类问题的衡量标准有些不同。一些合适的 最常见的指标有：</p>
+<ul>
+<li>k 精确率（P@k）</li>
+<li>k 平均精确率（AP@k）</li>
+<li>k 均值平均精确率（MAP@k） </li>
+<li>对数损失（Log loss）</li>
+</ul>
+<p>让我们从<strong>k 精确率或者 P@k</strong>我们不能将这一精确率与前面讨论的精确率混淆。如果您有一个给定样本的原始类别列表和同一个样本的预测类别列表，那么精确率的定义就是预测列表中仅考虑前 k 个预测结果的命中数除以 k。</p>
+<p>如果您对此感到困惑，使用 python 代码后就会明白。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span> <span class="nf">pk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="c1"># 如果k为0</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>        <span class="c1"># 返回0</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="c1"># 取预测标签前k个</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    <span class="c1"># 将预测标签转换为集合</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>    <span class="n">pred_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>    <span class="c1"># 将真实标签转换为集合</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>    <span class="n">true_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>    <span class="c1"># 预测标签集合与真实标签集合交集</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>    <span class="n">common_values</span> <span class="o">=</span> <span class="n">pred_set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">true_set</span><span class="p">)</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>    <span class="c1"># 计算精确率</span>
+<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span>
+</code></pre></div>
+<p>有了代码，一切都变得更容易理解了。</p>
+<p>现在，我们有了<strong>k 平均精确率或 AP@k</strong>。AP@k 是通过 P@k 计算得出的。例如，如果要计算 AP@3，我们要先计算 P@1、P@2 和 P@3，然后将总和除以 3。</p>
+<p>让我们来看看它的实现。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">def</span> <span class="nf">apk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="c1"># 初始化P@k列表</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="n">pk_values</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="c1"># 遍历1~k</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>        <span class="c1"># 将P@k加入列表</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>        <span class="n">pk_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="c1"># 若长度为0</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pk_values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>        <span class="c1"># 返回0</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>    <span class="c1"># 否则计算AP@K</span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pk_values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pk_values</span><span class="p">)</span>
+</code></pre></div>
+<p>这两个函数可以用来计算两个给定列表的 k 平均精确率 (AP@k)；让我们看看如何计算。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[]</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>   <span class="o">...</span><span class="p">:</span> <span class="p">]</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>   <span class="o">...</span><span class="p">:</span> <span class="p">]</span>
+<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)):</span>
+<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>   <span class="o">...</span><span class="p">:</span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>   <span class="o">...</span><span class="p">:</span>         <span class="nb">print</span><span class="p">(</span>
+<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>   <span class="o">...</span><span class="p">:</span>            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="s2">   ...:             y_true=</span><span class="si">{</span><span class="n">y_true</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span>
+<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a><span class="s2">   ...:             y_pred=</span><span class="si">{</span><span class="n">y_pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span>
+<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a><span class="s2">   ...:             AP@</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">apk</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">y_pred</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="n">j</span><span class="p">)</span><span class="si">}</span>
+<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="s2">   ...:             &quot;&quot;&quot;</span>
+<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a>   <span class="o">...</span><span class="p">:</span>         <span class="p">)</span>
+<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a>   <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a>        <span class="n">y_true</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+<a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a>        <span class="n">y_pred</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+<a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a>        <span class="n">AP</span><span class="o">@</span><span class="mi">1</span><span class="o">=</span><span class="mf">0.0</span>
+<a id="__codelineno-33-30" name="__codelineno-33-30" href="#__codelineno-33-30"></a>        <span class="n">y_true</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+<a id="__codelineno-33-31" name="__codelineno-33-31" href="#__codelineno-33-31"></a>        <span class="n">y_pred</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+<a id="__codelineno-33-32" name="__codelineno-33-32" href="#__codelineno-33-32"></a>        <span class="n">AP</span><span class="o">@</span><span class="mi">2</span><span class="o">=</span><span class="mf">0.25</span>
+<a id="__codelineno-33-33" name="__codelineno-33-33" href="#__codelineno-33-33"></a>        <span class="n">y_true</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-33-34" name="__codelineno-33-34" href="#__codelineno-33-34"></a>        <span class="n">y_pred</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-33-35" name="__codelineno-33-35" href="#__codelineno-33-35"></a>        <span class="n">AP</span><span class="o">@</span><span class="mi">3</span><span class="o">=</span><span class="mf">0.38888888888888884</span>
+</code></pre></div>
+<p>请注意，我省略了输出结果中的许多数值，但你会明白其中的意思。这就是我们如何计算 AP@k 的方法，即每个样本的 AP@k。在机器学习中，我们对所有样本都感兴趣，这就是为什么我们有<strong>均值平均精确率 k 或 MAP@k</strong>。MAP@k 只是 AP@k 的平均值，可以通过以下 python 代码轻松计算。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span> <span class="nf">mapk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="c1"># 初始化AP@k列表</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="n">apk_values</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    <span class="c1"># 遍历0~（真实标签数-1）</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)):</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>        <span class="c1"># 将AP@K加入列表</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>        <span class="n">apk_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>            <span class="n">apk</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span> 
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>        <span class="p">)</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>    <span class="c1"># 计算平均AP@k</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">apk_values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">apk_values</span><span class="p">)</span>
+</code></pre></div>
+<p>现在，我们可以针对相同的列表计算 k=1、2、3 和 4 时的 MAP@k。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[]</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>   <span class="o">...</span><span class="p">:</span> <span class="p">]</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>   <span class="o">...</span><span class="p">:</span>     <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>   <span class="o">...</span><span class="p">:</span> <span class="p">]</span>
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">mapk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.3333333333333333</span>
+<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">mapk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+<a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.375</span>
+<a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">mapk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> 
+<a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.3611111111111111</span>
+<a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">mapk</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> 
+<a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.34722222222222215</span>
+</code></pre></div>
+<p>P@k、AP@k 和 MAP@k 的范围都是从 0 到 1，其中 1 为最佳。</p>
+<p>请注意，有时您可能会在互联网上看到 P@k 和 AP@k 的不同实现方式。 例如，让我们来看看其中一种实现方式。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="k">def</span> <span class="nf">apk</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span> 
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="c1"># 若预测标签长度大于k</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span><span class="o">&gt;</span><span class="n">k</span><span class="p">:</span> 
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>        <span class="c1"># 取前k个标签</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>        <span class="n">predicted</span> <span class="o">=</span> <span class="n">predicted</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>    <span class="n">score</span> <span class="o">=</span> <span class="mf">0.0</span> 
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>    <span class="n">num_hits</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predicted</span><span class="p">):</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>        <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">actual</span> <span class="ow">and</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">predicted</span><span class="p">[:</span><span class="n">i</span><span class="p">]:</span> 
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>            <span class="n">num_hits</span> <span class="o">+=</span> <span class="mf">1.0</span>
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>            <span class="n">score</span> <span class="o">+=</span> <span class="n">num_hits</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span> 
+<a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">actual</span><span class="p">:</span>
+<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>        <span class="k">return</span> <span class="mf">0.0</span>
+<a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>    <span class="k">return</span> <span class="n">score</span> <span class="o">/</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">actual</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+</code></pre></div>
+<p>这种实现方式是 AP@k 的另一个版本，其中顺序很重要，我们要权衡预测结果。这种实现方式的结果与我的介绍略有不同。</p>
+<p>现在，我们来看看<strong>多标签分类的对数损失</strong>。这很容易。您可以将目标转换为二元分类，然后对每一列使用对数损失。最后，你可以求出每列对数损失的平均值。这也被称为平均列对数损失。当然，还有其他方法可以实现这一点，你应该在遇到时加以探索。</p>
+<p>我们现在可以说已经掌握了所有二元分类、多类分类和多标签分类指标，现在我们可以转向回归指标。</p>
+<p>回归中最常见的指标是<strong>误差（Error）</strong>。误差很简单，也很容易理解。
+$$
+Error = True\ Value - Predicted\ Value
+$$
+<strong>绝对误差（Absolute error）</strong>只是上述误差的绝对值。
+$$
+Absolute\ Error = Abs(True\ Value - Predicted\ Value)
+$$
+接下来我们讨论<strong>平均绝对误差（MAE）</strong>。它只是所有绝对误差的平均值。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="k">def</span> <span class="nf">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="c1">#初始化误差</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="c1"># 遍历y_true, y_pred</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>        <span class="c1"># 累加绝对误差</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>        <span class="n">error</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">yp</span><span class="p">)</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>    <span class="c1"># 返回平均绝对误差</span>
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>    <span class="k">return</span> <span class="n">error</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+</code></pre></div>
+<p>同样，我们还有平方误差和<strong>均方误差 （MSE）</strong>。
+$$
+Squared\ Error = (True Value - Predicted\ Value)^2
+$$
+均方误差（MSE）的计算方式如下</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">def</span> <span class="nf">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="c1"># 初始化误差</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>    <span class="c1"># 遍历y_true, y_pred</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>        <span class="c1"># 累加误差平方和</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>        <span class="n">error</span> <span class="o">+=</span> <span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">yp</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> 
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>    <span class="c1"># 计算均方误差    </span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>    <span class="k">return</span> <span class="n">error</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+</code></pre></div>
+<p>MSE 和 <strong>RMSE（均方根误差）</strong>是评估回归模型最常用的指标。
+$$
+RMSE = SQRT(MSE)
+$$
+同一类误差的另一种类型是<strong>平方对数误差</strong>。有人称其为 <strong>SLE</strong>，当我们取所有样本中这一误差的平均值时，它被称为 MSLE（平均平方对数误差），实现方法如下。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">def</span> <span class="nf">mean_squared_log_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="c1"># 初始化误差</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>    <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>    <span class="c1"># 遍历y_true, y_pred</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>        <span class="c1"># 计算平方对数误差</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>        <span class="n">error</span> <span class="o">+=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">yt</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">yp</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span> 
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>    <span class="c1"># 计算平均平方对数误差</span>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>    <span class="k">return</span> <span class="n">error</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>均方根对数误差</strong>只是其平方根。它也被称为 <strong>RMSLE</strong>。</p>
+<p>然后是百分比误差：
+$$
+Percentage\ Error = (( True\ Value – Predicted\ Value ) / True\ Value ) \times 100
+$$
+同样可以转换为所有样本的平均百分比误差。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">def</span> <span class="nf">mean_percentage_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="c1"># 初始化误差</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>    <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>    <span class="c1"># 遍历y_true, y_pred</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>        <span class="c1"># 计算百分比误差</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>        <span class="n">error</span> <span class="o">+=</span> <span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">yp</span><span class="p">)</span> <span class="o">/</span> <span class="n">yt</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="c1"># 返回平均百分比误差</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>    <span class="k">return</span> <span class="n">error</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+</code></pre></div>
+<p>绝对误差的绝对值（也是更常见的版本）被称为<strong>平均绝对百分比误差或 MAPE</strong>。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="k">def</span> <span class="nf">mean_abs_percentage_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="c1"># 初始化误差</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>    <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>    <span class="c1"># 遍历y_true, y_pred</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>        <span class="c1"># 计算绝对百分比误差</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>        <span class="n">error</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">yp</span><span class="p">)</span> <span class="o">/</span> <span class="n">yt</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>    <span class="c1">#返回平均绝对百分比误差</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>    <span class="k">return</span> <span class="n">error</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+</code></pre></div>
+<p>回归的最大优点是，只有几个最常用的指标，几乎可以应用于所有回归问题。与分类指标相比，回归指标更容易理解。</p>
+<p>让我们来谈谈另一个回归指标 <span class="arithmatex">\(R^2\)</span>（R方），也称为<strong>判定系数</strong>。</p>
+<p>简单地说，R 方表示模型与数据的拟合程度。R 方接近 1.0 表示模型与数据的拟合程度相当好，而接近 0 则表示模型不是那么好。当模型只是做出荒谬的预测时，R 方也可能是负值。</p>
+<p>R 方的计算公式如下所示，但 Python 的实现总是能让一切更加清晰。
+$$
+R^2 = \frac{\sum^{N}<em t_i="t_i">{i=1}(y</em>-y_{p_i})^2}{\sum^{N}<em t_i="t_i">{i=1}(y</em> - y_{t_{mean}})}
+$$</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="k">def</span> <span class="nf">r2</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span> 
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>    <span class="c1"># 计算平均真实值</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>    <span class="n">mean_true_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>    <span class="c1"># 初始化平方误差</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>    <span class="n">numerator</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>    <span class="n">denominator</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>    <span class="c1"># 遍历y_true, y_pred</span>
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>    <span class="k">for</span> <span class="n">yt</span><span class="p">,</span> <span class="n">yp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>        <span class="n">numerator</span> <span class="o">+=</span> <span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">yp</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> 
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>        <span class="n">denominator</span> <span class="o">+=</span> <span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">mean_true_value</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> 
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>    <span class="n">ratio</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+<a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>    <span class="c1"># 计算R方</span>
+<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>    <span class="k">return</span> <span class="mi">1</span> <span class="err">–</span> <span class="n">ratio</span>
+</code></pre></div>
+<p>还有更多的评价指标，这个清单永远也列不完。我可以写一本书，只介绍不同的评价指标。也许我会的。现在，这些评估指标几乎可以满足你想尝试解决的所有问题。请注意，我已经以最直接的方式实现了这些指标，这意味着它们不够高效。你可以通过正确使用 numpy 以非常高效的方式实现其中大部分指标。例如，看看平均绝对误差的实现，不需要任何循环。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="k">def</span> <span class="nf">mae_np</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">))</span>
+</code></pre></div>
+<p>我本可以用这种方法实现所有指标，但为了学习，最好还是看看底层实现。一旦你学会了纯 python 的底层实现，并且不使用大量 numpy，你就可以很容易地将其转换为 numpy，并使其变得更快。</p>
+<p>然后是一些高级度量。</p>
+<p>其中一个应用相当广泛的指标是<strong>二次加权卡帕</strong>，也称为 <strong>QWK</strong>。它也被称为科恩卡帕。<strong>QWK</strong> 衡量两个 "评分 "之间的 "一致性"。评分可以是 0 到 N 之间的任何实数，预测也在同一范围内。一致性可以定义为这些评级之间的接近程度。因此，它适用于有 N 个不同类别的分类问题。如果一致度高，分数就更接近 1.0。Cohen's kappa 在 scikit-learn 中有很好的实现，关于该指标的详细讨论超出了本书的范围。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> 
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">cohen_kappa_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;quadratic&quot;</span><span class="p">)</span> 
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.33333333333333337</span>
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a><span class="n">In</span> <span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="n">Out</span><span class="p">[</span><span class="n">X</span><span class="p">]:</span> <span class="mf">0.4444444444444444</span>
+</code></pre></div>
+<p>您可以看到，尽管准确度很高，但 QWK 却很低。QWK 大于 0.85 即为非常好！</p>
+<p>一个重要的指标是<strong>马修相关系数（MCC）</strong>。1 代表完美预测，-1 代表不完美预测，0 代表随机预测。MCC 的计算公式非常简单。
+$$
+MCC = \frac{TP \times TN - FP \times FN}{\sqrt{(TP + FP) \times (FN + TN) \times (FP + TN) \times (TP + FN)}}
+$$
+我们看到，MCC 考虑了 TP、FP、TN 和 FN，因此可用于处理类偏斜的问题。您可以使用我们已经实现的方法在 python 中快速实现它。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">def</span> <span class="nf">mcc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="c1"># 真阳性样本数</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>    <span class="n">tp</span> <span class="o">=</span> <span class="n">true_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>    <span class="c1"># 真阴性样本数</span>
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>    <span class="n">tn</span> <span class="o">=</span> <span class="n">true_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a>    <span class="c1"># 假阳性样本数</span>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>    <span class="n">fp</span> <span class="o">=</span> <span class="n">false_positive</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>    <span class="c1"># 假阴性样本数</span>
+<a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a>    <span class="n">fn</span> <span class="o">=</span> <span class="n">false_negative</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a>    <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">tp</span> <span class="o">*</span> <span class="n">tn</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">fp</span> <span class="o">*</span> <span class="n">fn</span><span class="p">)</span> 
+<a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a>    <span class="n">denominator</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a>        <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span> <span class="o">*</span> 
+<a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a>        <span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="n">tn</span><span class="p">)</span> <span class="o">*</span> 
+<a id="__codelineno-45-14" name="__codelineno-45-14" href="#__codelineno-45-14"></a>        <span class="p">(</span><span class="n">fp</span> <span class="o">+</span> <span class="n">tn</span><span class="p">)</span> <span class="o">*</span> 
+<a id="__codelineno-45-15" name="__codelineno-45-15" href="#__codelineno-45-15"></a>        <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span><span class="p">)</span>
+<a id="__codelineno-45-16" name="__codelineno-45-16" href="#__codelineno-45-16"></a>    <span class="p">)</span>
+<a id="__codelineno-45-17" name="__codelineno-45-17" href="#__codelineno-45-17"></a>    <span class="n">denominator</span> <span class="o">=</span> <span class="n">denominator</span> <span class="o">**</span> <span class="mf">0.5</span> 
+<a id="__codelineno-45-18" name="__codelineno-45-18" href="#__codelineno-45-18"></a>    <span class="k">return</span> <span class="n">numerator</span><span class="o">/</span><span class="n">denominator</span>
+</code></pre></div>
+<p>这些指标可以帮助你入门，几乎适用于所有机器学习问题。</p>
+<p>需要注意的一点是，在评估非监督方法（例如某种聚类）时，最好创建或手动标记测试集，并将其与建模部分的所有内容分开。完成聚类后，就可以使用任何一种监督学习指标来评估测试集的性能了。</p>
+<p>一旦我们了解了特定问题应该使用什么指标，我们就可以开始更深入地研究我们的模型，以求改进。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../%E4%BA%A4%E5%8F%89%E6%A3%80%E9%AA%8C/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 交叉检验" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              交叉检验
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E7%BB%84%E7%BB%87%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/" class="md-footer__link md-footer__link--next" aria-label="下一页: 组织机器学习项目" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              组织机器学习项目
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
