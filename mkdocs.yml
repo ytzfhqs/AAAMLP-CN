@@ -47,6 +47,14 @@ markdown_extensions:
   - pymdownx.mark
   - attr_list
 
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
 nav:
   - 前言: 'index.md'
   - 交叉检验: '交叉检验.md'
