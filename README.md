@@ -17,7 +17,7 @@ Abhishek 在 Kaggle 上的成就：
 
 目前，Abhishek 在挪威 boost 公司担任首席数据科学家的职位，这是一家专门从事会话人工智能的软件公司。
 
-本文对**Approaching (Almost) Any Machine Learning Problem**进行了**中文翻译**，由于本人水平有限，且未使用机器翻译，可能有部分言语不通顺或本土化程度不足，也请大家在阅读过程中多提供宝贵意见。另附上书籍原[项目地址](https://github.com/abhishekkrthakur/approachingalmost)
+本文对**Approaching (Almost) Any Machine Learning Problem**进行了**中文翻译**，由于本人水平有限，且未使用机器翻译，可能有部分言语不通顺或本土化程度不足，也请大家在阅读过程中多提供宝贵意见。另附上书籍原[项目地址](https://github.com/abhishekkrthakur/approachingalmost)，**转载请一定标明出处！**
 
 本项目**支持在线阅读**，方便您随时随地进行查阅。
 
