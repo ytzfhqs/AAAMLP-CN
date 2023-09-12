@@ -3,6 +3,9 @@
  - ⚡修正部分已知文字错误和代码错误
  - 🤗添加[在线文档](https://ytzfhqs.github.io/AAAMLP-CN/)
 
+## 翻译进程
+ - 2023.09.12添加章节：**组合和堆叠方法**、**可重复代码和模型方法**
+
 ## 简介
 Abhishek Thakur，很多 kaggler 对他都非常熟悉，2017 年，他在 Linkedin 发表了一篇名为**Approaching (Almost) Any Machine Learning Problem**的文章，介绍他建立的一个自动的机器学习框架，几乎可以解决任何机器学习问题，这篇文章曾火遍 Kaggle。
 
