@@ -1,4 +1,15 @@
-# 前言
+# AAAMLP-CN
+
+## 新特性 - 2023.09.07
+
+- ⚡ 修正部分已知文字错误和代码错误
+- 🤗 添加[在线文档](https://ytzfhqs.github.io/AAAMLP-CN/)
+
+## 翻译进程
+
+- 2023.09.12 添加章节：**组合和堆叠方法**、**可重复代码和模型方法**
+
+## 简介
 
 Abhishek Thakur，很多 kaggler 对他都非常熟悉，2017 年，他在 Linkedin 发表了一篇名为**Approaching (Almost) Any Machine Learning Problem**的文章，介绍他建立的一个自动的机器学习框架，几乎可以解决任何机器学习问题，这篇文章曾火遍 Kaggle。
 
@@ -10,7 +21,7 @@ Abhishek 在 Kaggle 上的成就：
 
 目前，Abhishek 在挪威 boost 公司担任首席数据科学家的职位，这是一家专门从事会话人工智能的软件公司。
 
-本文对**Approaching (Almost) Any Machine Learning Problem**进行了**中文翻译**，由于本人水平有限，且未使用机器翻译，可能有部分言语不通顺或本土化程度不足，也请大家在阅读过程中多提供宝贵意见。另附上书籍原[项目地址](https://github.com/abhishekkrthakur/approachingalmost)
+本文对**Approaching (Almost) Any Machine Learning Problem**进行了**中文翻译**，由于本人水平有限，且未使用机器翻译，可能有部分言语不通顺或本土化程度不足，也请大家在阅读过程中多提供宝贵意见。另附上书籍原[项目地址](https://github.com/abhishekkrthakur/approachingalmost)，**转载请一定标明出处！**
 
 本项目**支持在线阅读**，方便您随时随地进行查阅。
 
@@ -27,8 +38,8 @@ Abhishek 在 Kaggle 上的成就：
 - **超参数优化（已翻译）**
 - 图像分类和分割方法（未翻译）
 - 文本分类或回归方法（未翻译）
-- 组合和堆叠方法（未翻译）
-- 可重复代码和模型方法（未翻译）
+- **组合和堆叠方法（已翻译）**
+- **可重复代码和模型方法（已翻译）**
 
 我将会把完整的翻译版 `Markdown` 文件上传到 GitHub，以供大家免费下载和阅读。为了最佳的阅读体验，推荐使用 PDF 格式或是在线阅读进行查看
 
