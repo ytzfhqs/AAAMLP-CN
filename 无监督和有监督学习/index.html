@@ -438,18 +438,18 @@
 <p>假设你在一家处理信用卡交易的金融公司工作。每秒钟都有大量数据涌入。唯一的问题是，很难找到一个人来将每笔交易标记为有效交易、真实交易或欺诈交易。当我们没有任何关于交易是欺诈还是真实的信息时，问题就变成了无监督问题。要解决这类问题，我们必须考虑可以将数据分为多少个<strong>聚类</strong>。聚类是解决此类问题的方法之一，但必须注意的是，还有其他几种方法可以应用于无监督问题。对于欺诈检测问题，我们可以说数据可以分为两类（欺诈或真实）。</p>
 <p>当我们知道聚类的数量后，就可以使用聚类算法来解决无监督问题。在图 2 中，假设数据分为两类，深色代表欺诈，浅色代表真实交易。然而，在使用聚类方法之前，我们并不知道这些类别。应用聚类算法后，我们应该能够区分这两个假定目标。 为了理解无监督问题，我们还可以使用许多分解技术，如<strong>主成分分析（PCA）、t-分布随机邻域嵌入（t-SNE）</strong>等。</p>
 <p>有监督的问题更容易解决，因为它们很容易评估。我们将在接下来的章节中详细介绍评估技术。然而，对无监督算法的结果进行评估具有挑战性，需要大量的人为干预或启发式方法。在本书中，我们将主要关注有监督数据和模型，但这并不意味着我们会忽略无监督数据问题。</p>
-<p><img alt="" src="figures/AAAMLP_page8_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page8_image.png" /></p>
 <p align="center"><b>图 2：无监督学习数据集</b> </p>
 
 <p>大多数情况下，当人们开始学习数据科学或机器学习时，都会从非常著名的数据集开始，例如泰坦尼克数据集或虹膜数据集，这些都是有监督的问题。在泰坦尼克号数据集中，你必须根据船票等级、性别、年龄等因素预测泰坦尼克号上乘客的存活率。同样，在鸢尾花数据集中，您必须根据萼片宽度、花瓣长度、萼片长度和花瓣宽度等因素预测花的种类。</p>
 <p>无监督数据集可能包括用于客户细分的数据集。 例如，您拥有访问您的电子商务网站的客户数据，或者访问商店或商场的客户数据，而您希望将它们细分或聚类为不同的类别。无监督数据集的另一个例子可能包括信用卡欺诈检测或对几张图片进行聚类等。</p>
 <p>大多数情况下，还可以将有监督数据集转换为无监督数据集，以查看它们在绘制时的效果。</p>
 <p>例如，让我们来看看图 3 中的数据集。图 3 显示的是 MNIST 数据集，这是一个非常流行的手写数字数据集，它是一个有监督的问题，在这个问题中，你会得到数字图像和与之相关的正确标签。你必须建立一个模型，在只提供图像的情况下识别出哪个数字是它。</p>
-<p><img alt="" src="figures/AAAMLP_page9_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page9_image.png" /></p>
 <p align="center"><b>图 3：MNIST数据集</b> </p>
 
 <p>如果我们对这个数据集进行 t 分布随机邻域嵌入（t-SNE）分解，我们可以看到，只需在图像像素上降维至2个维度，就能在一定程度上分离图像。如图 4 所示。</p>
-<p><img alt="" src="figures/AAAMLP_page9_image_1.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page9_image_1.png" /></p>
 <p align="center"><b>图 4：MNIST 数据集的 t-SNE 可视化。使用了 3000 幅图像。</b> </p>
 
 <p>让我们来看看是如何实现的。首先是导入所有需要的库。</p>
@@ -474,7 +474,7 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">single_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>这段代码将绘制如下图像：</p>
-<p><img alt="" src="figures/AAAMLP_page11_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page11_image.png" /></p>
 <p align="center"><b>图 5：绘制MNIST数据集单张图片</b> </p>
 
 <p>最重要的一步是在我们获取数据之后。</p>
@@ -487,7 +487,7 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">tsne_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;targets&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tsne_df</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </code></pre></div>
 <p>在这里，我们从一个 numpy 数组创建一个 pandas 数据帧。x 和 y 是 t-SNE 分解的两个维度，target 是实际数字。这样我们就得到了如图 6 所示的数据帧。</p>
-<p><img alt="" src="figures/AAAMLP_page12_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page12_image.png" /></p>
 <p align="center"><b>图 6：t-SNE后数据前10行</b> </p>
 
 <p>最后，我们可以使用 seaborn 和 matplotlib 绘制它。</p>
