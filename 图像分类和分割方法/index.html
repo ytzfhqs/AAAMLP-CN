@@ -467,13 +467,13 @@
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p>上面的代码使用 numpy 生成一个随机矩阵。该矩阵由 0 到 255（包含）的值组成，大小为 256x256（也称为像素）。</p>
-<p><img alt="" src="figures/AAAMLP_page186_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page186_image.png" /></p>
 <p align="center"><b>图 1：二维图像阵列（单通道）及其展平版本</b> </p>
 
 <p>正如你所看到的，拼写后的版本只是一个大小为 M 的向量，其中 M = N * N，在本例中，这个向量的大小为 256 * 256 = 65536。</p>
 <p>现在，如果我们继续对数据集中的所有图像进行处理，每个样本就会有 65536 个特征。我们可以在这些数据上快速建立<strong>决策树模型、随机森林模型或基于 SVM 的模型</strong>。这些模型将基于像素值，尝试将正样本与负样本区分开来（二元分类问题）。</p>
 <p>你们一定都听说过猫与狗的问题，这是一个经典的问题。如果你们还记得，在评估指标一章的开头，我向你们介绍了一个气胸图像数据集。那么，让我们尝试建立一个模型来检测肺部的 X 光图像是否存在气胸。也就是说，这是一个（并不）简单的二元分类。</p>
-<p><img alt="" src="figures/AAAMLP_page186_image_1.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page186_image_1.png" /></p>
 <p align="center"><b>图 2：非气胸与气胸 X 光图像对比</b> </p>
 
 <p>在图 2 中，您可以看到非气胸和气胸图像的对比。您一定已经注意到了，对于一个非专业人士（比如我）来说，要在这些图像中辨别出哪个是气胸是相当困难的。</p>
@@ -582,20 +582,20 @@
 </code></pre></div>
 <p>平均 AUC 值约为 0.72。这还不错，但我们希望能做得更好。你可以将这种方法用于图像，这也是它在以前最常用的方法。SVM 在图像数据集方面相当有名。深度学习已被证明是解决此类问题的最先进方法，因此我们下一步可以试试它。</p>
 <p>关于深度学习的历史以及谁发明了什么，我就不多说了。让我们看看最著名的深度学习模型之一 AlexNet。</p>
-<p><img alt="" src="figures/AAAMLP_page189_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page189_image.png" /></p>
 <p align="center"><b>图 3：AlexNet 架构9 请注意，本图中的输入大小不是 224x224 而是 227x227</b> </p>
 
 <p>如今，你可能会说这只是一个基本的<strong>深度卷积神经网络</strong>，但它却是许多新型深度网络（深度神经网络）的基础。我们看到，图 3 中的网络是一个具有五个卷积层、两个密集层和一个输出层的卷积神经网络。我们看到还有最大池化。这是什么意思？让我们来看看在进行深度学习时会遇到的一些术语。</p>
-<p><img alt="" src="figures/AAAMLP_page189_image_1.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page189_image_1.png" /></p>
 <p align="center"><b>图 4：图像大小为 8x8，滤波器大小为 3x3，步长为 2。</b> </p>
 
 <p>图 4 引入了两个新术语：滤波器和步长。<strong>滤波器</strong>是由给定函数初始化的二维矩阵，由指定函数初始化。<strong>Kaiming正态初始化</strong>，是卷积神经网络的最佳选择。这是因为大多数现代网络都使用 <strong>ReLU</strong>（整流线性单元）激活函数，需要适当的初始化来避免梯度消失问题（梯度趋近于零，网络权重不变）。该滤波器与图像进行卷积。卷积不过是滤波器与给定图像中当前重叠像素之间的元素相乘的总和。您可以在任何高中数学教科书中阅读更多关于卷积的内容。我们从图像的左上角开始对滤镜进行卷积，然后水平移动滤镜。如果移动 1 个像素，则步长为 1；如果移动 2 个像素，则步长为 2。</p>
 <p>即使在自然语言处理中，例如在问题和回答系统中需要从大量文本语料中筛选答案时，步长也是一个非常有用的概念。当我们在水平方向上走到尽头时，就会以同样的步长垂直向下移动过滤器，从左侧开始。图 4 还显示了过滤器移出图像的情况。在这种情况下，无法计算卷积。因此，我们跳过它。如果不想跳过，则需要对图像进行<strong>填充（pad）</strong>。还必须注意的是，卷积会减小图像的大小。填充也是保持图像大小不变的一种方法。在图 4 中，一个 3x3 滤波器正在水平和垂直移动，每次移动都会分别跳过两列和两行（即像素）。由于它跳过了两个像素，所以步长 = 2。因此图像大小为 [(8-3) / 2] + 1 = 3.5。我们取 3.5 的下限，所以是 3x3。您可以在草稿纸上进行尝试。</p>
-<p><img alt="" src="figures/AAAMLP_page190_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page190_image.png" /></p>
 <p align="center"><b>图 5：通过填充，我们可以提供与输入图像大小相同的图像</b> </p>
 
 <p>我们可以从图 5 中看到填充的效果。现在，我们有一个 3x3 的滤波器，它以 1 的步长移动。原始图像的大小为 6x6，我们添加了 1 的<strong>填充</strong>。在这种情况下，生成的图像将与输入图像大小相同，即 6x6。在处理深度神经网络时可能会遇到的另一个相关术语是<strong>膨胀（dilation）</strong>，如图 6 所示。</p>
-<p><img alt="" src="figures/AAAMLP_page191_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page191_image.png" /></p>
 <p align="center"><b>图 6：膨胀（dilation）的例子</b> </p>
 
 <p>在膨胀过程中，我们将滤波器扩大 N-1，其中 N 是膨胀率的值，或简称为膨胀。在这种带膨胀的内核中，每次卷积都会跳过一些像素。这在分割任务中尤为有效。请注意，我们只讨论了二维卷积。 还有一维卷积和更高维度的卷积。它们都基于相同的基本概念。</p>
@@ -997,7 +997,7 @@
 </code></pre></div>
 <p>这个模型似乎表现最好。不过，您可以调整 AlexNet 中的不同参数和图像大小，以获得更好的分数。 使用增强技术将进一步提高得分。优化深度神经网络很难，但并非不可能。选择 Adam 优化器、使用低学习率、在验证损失达到高点时降低学习率、尝试一些增强技术、尝试对图像进行预处理（如在需要时进行裁剪，这也可视为预处理）、改变批次大小等。你可以做很多事情来优化深度神经网络。</p>
 <p>与 AlexNet 相比，<strong>ResNet</strong> 的结构要复杂得多。ResNet 是残差神经网络（Residual Neural Network）的缩写，由 K. He、X. Zhang、S. Ren 和 J. Sun 在 2015 年发表的论文中提出。ResNet 由<strong>残差块</strong>（residual blocks）组成，通过跳过某些层，使知识能够不断在各层中进行传递。这些层之间的 连接被称为<strong>跳跃连接</strong>（skip-connections），因为我们跳过了一层或多层。跳跃连接通过将梯度传播到更多层来帮助解决梯度消失问题。这样，我们就可以训练非常大的卷积神经网络，而不会损失性能。通常情况下，如果我们使用的是大型神经网络，那么当训练到某一节点上时训练损失反而会增加，但这可以通过使用跳跃连接来避免。通过图 7 可以更好地理解这一点。</p>
-<p><img alt="" src="figures/AAAMLP_page205_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page205_image.png" /></p>
 <p align="center"><b>图 7：简单连接与残差连接的比较。参见跳跃连接。请注意，本图省略了最后一层。</b> </p>
 
 <p>残差块非常容易理解。你从某一层获取输出，跳过一些层，然后将输出添加到网络中更远的一层。虚线表示输入形状需要调整，因为使用了最大池化，而最大池化的使用会改变输出的大小。</p>
@@ -1017,7 +1017,7 @@
 <li>EfficientNet, etc.</li>
 </ul>
 <p>大部分预训练的最先进模型可以在 GitHub 上的 pytorch- pretrainedmodels 资源库中找到：https://github.com/Cadene/pretrained-models.pytorch。详细讨论这些模型不在本章（和本书）范围之内。既然我们只关注应用，那就让我们看看这样的预训练模型如何用于分割任务。</p>
-<p><img alt="" src="figures/AAAMLP_page206_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page206_image.png" /></p>
 <p align="center"><b>图 8：U-Net架构</b> </p>
 
 <p>分割（Segmentation）是计算机视觉中相当流行的一项任务。在分割任务中，我们试图从背景中移除/提取前景。 前景和背景可以有不同的定义。我们也可以说，这是一项像素分类任务，你的工作是给给定图像中的每个像素分配一个类别。事实上，我们正在处理的气胸数据集就是一项分割任务。在这项任务中，我们需要对给定的胸部放射图像进行气胸分割。用于分割任务的最常用模型是 U-Net。其结构如图 8 所示。</p>
@@ -1366,7 +1366,7 @@
 <a id="__codelineno-14-164" name="__codelineno-14-164" href="#__codelineno-14-164"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>在分割问题中，你可以使用各种损失函数，例如二元交叉熵、focal损失、dice损失等。我把这个问题留给 读者根据评估指标来决定合适的损失。当训练这样一个模型时，您将建立预测气胸位置的模型，如图 9 所示。在上述代码中，我们使用英伟达 apex 进行了混合精度训练。请注意，从 PyTorch 1.6.0+ 版本开始，PyTorch 本身就提供了这一功能。</p>
-<p><img alt="" src="figures/AAAMLP_page219_image.png" /></p>
+<p><img alt="" src="../figures/AAAMLP_page219_image.png" /></p>
 <p align="center"><b>图 9：从训练有素的模型中检测到气胸的示例（可能不是正确预测）。</b> </p>
 
 <p>我在一个名为 "Well That's Fantastic Machine Learning (WTFML) "的 python 软件包中收录了一些常用函数。让我们看看它如何帮助我们为 FGVC 202013 植物病理学挑战赛中的植物图像建立多类分类模型。</p>
