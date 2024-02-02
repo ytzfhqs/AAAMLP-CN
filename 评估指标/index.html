@@ -869,7 +869,7 @@ Prediction = Probability &gt;= Threshold
 \]</div>
 <p>也就是说，预测是一个只包含二元变量的新列表。如果概率大于或等于给定的阈值，则预测中的一项为 1，否则为 0。</p>
 <p>你猜怎么着，你可以使用 ROC 曲线来选择这个阈值！ROC 曲线会告诉您阈值对假阳性率和真阳性率的影响，进而影响假阳性和真阳性。您应该选择最适合您的问题和数据集的阈值。</p>
-<p>例如，如果您不希望有太多的误报，那么阈值就应该高一些。不过，这也会带来更多的误报。注意权衡利弊，选择最佳阈值。让我们看看这些阈值如何影响真阳性和假阳性值。</p>
+<p>例如，如果您不希望有太多的误报，那么阈值就应该高一些。不过，这也会带来更多的漏报。注意权衡利弊，选择最佳阈值。让我们看看这些阈值如何影响真阳性和假阳性值。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 真阳性样本数列表</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">tp_list</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># 假阳性样本数列表</span>
