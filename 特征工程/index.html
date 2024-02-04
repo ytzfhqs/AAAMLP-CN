@@ -659,7 +659,7 @@
 <p><img alt="" src="../figures/AAAMLP_page148_image.png" /></p>
 <p align="center"><b>图 5：数字特征列的直方图</b> </p>
 
-<p>另一个有趣的功能是将数字转换为类别。这就是所谓的<strong>分箱</strong>。让我们看一下图 5，它显示了一个随机数字特征的样本直方图。我们在该图中使用了10个分箱，可以看到我们可以将数据分为10个部分。这可以使用 pandas 的cat函数来实现。</p>
+<p>另一个有趣的功能是将数字转换为类别。这就是所谓的<strong>分箱</strong>。让我们看一下图 5，它显示了一个随机数字特征的样本直方图。我们在该图中使用了10个分箱，可以看到我们可以将数据分为10个部分。这可以使用 pandas 的 <em>cut</em> 函数来实现。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 创建10个分箱</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">df</span><span class="p">[</span><span class="s2">&quot;f_bin_10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;f_1&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># 创建100个分箱</span>

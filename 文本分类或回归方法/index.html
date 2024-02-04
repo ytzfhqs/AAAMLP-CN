@@ -923,7 +923,7 @@ $$
 <p><img alt="" src="../figures/AAAMLP_page244_image.png" /></p>
 <p align="center"><b>图 1：可视化二维单词嵌入。</b> </p>
 
-<p>图 1 显示了二维单词嵌入的可视化效果。假设我们以某种方式完成了词语的二维表示。图 1 显示，如果从Berlin（德国首都）的向量中减去德国（Germany）的向量，再加上法国（france）的向量，就会得到一个接近Paris（法国首都）的向量。由此可见，嵌入式也能进行类比。 这并不总是正确的，但这样的例子有助于理解单词嵌入的作用。像 "嗨，你好吗 "这样的句子可以用下面的一堆向量来表示。</p>
+<p>图 1 显示了二维单词嵌入的可视化效果。假设我们以某种方式完成了词语的二维表示。图 1 显示，如果从Berlin（德国首都）的向量中减去德国（Germany）的向量，再加上法国（France）的向量，就会得到一个接近Paris（法国首都）的向量。由此可见，嵌入式也能进行类比。 这并不总是正确的，但这样的例子有助于理解单词嵌入的作用。像 "hi, how are you?" 这样的句子可以用下面的一堆向量来表示。</p>
 <p>hi          ─&gt;        [vector (v1) of size 300]</p>
 <p>,            ─&gt;        [vector (v2) of size 300]</p>
 <p>how    ─&gt;         [vector (v3) of size 300] </p>
@@ -1290,8 +1290,8 @@ $$
 <a id="__codelineno-37-36" name="__codelineno-37-36" href="#__codelineno-37-36"></a>    <span class="k">return</span> <span class="n">embedding_matrix</span>
 </code></pre></div>
 <p>阅读并运行上面的函数，看看发生了什么。 该函数还可以修改为使用词干词或词形还原词。 最后，您希望训练语料库中的未知单词数量最少。 另一个技巧是学习嵌入层，即使其可训练，然后训练网络。</p>
-<p>到目前为止，我们已经为分类问题构建了很多模型。 然而，现在是布偶时代，越来越多的人转向基于变形金刚的模型。 基于 Transformer 的网络能够处理本质上长期的依赖关系。 LSTM 仅当它看到前一个单词时才查看下一个单词。 变压器的情况并非如此。 它可以同时查看整个句子中的所有单词。 因此，另一个优点是它可以轻松并行化并更有效地使用 GPU。</p>
-<p>Transformers 是一个非常广泛的话题，有太多的模型：<strong>BERT、RoBERTa、XLNet、XLM-RoBERTa、T5</strong> 等。我将向您展示一种可用于所有这些模型（T5 除外）进行分类的通用方法 我们一直在讨论的问题。 请注意，这些变压器需要训练它们所需的计算能力。 因此，如果您没有高端系统，与基于 LSTM 或 TF-IDF 的模型相比，训练模型可能需要更长的时间。</p>
+<p>到目前为止，我们已经为分类问题构建了很多模型。 然而，现在是布偶时代，越来越多的人转向基于 Transformer 的模型。 基于 Transformer 的网络能够处理本质上长期的依赖关系。 LSTM 仅当它看到前一个单词时才查看下一个单词。 Transformer 的情况并非如此。 它可以同时查看整个句子中的所有单词。 因此，另一个优点是它可以轻松并行化并更有效地使用 GPU。</p>
+<p>Transformers 是一个非常广泛的话题，有太多的模型：<strong>BERT、RoBERTa、XLNet、XLM-RoBERTa、T5</strong> 等。我将向您展示一种可用于所有这些模型（T5 除外）进行分类的通用方法 我们一直在讨论的问题。 请注意，这些 Transformer 需要训练它们所需的计算能力。 因此，如果您没有高端系统，与基于 LSTM 或 TF-IDF 的模型相比，训练模型可能需要更长的时间。</p>
 <p>我们要做的第一件事是创建一个配置文件。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="kn">import</span> <span class="nn">transformers</span>
 <a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">MAX_LEN</span> <span class="o">=</span> <span class="mi">512</span>
@@ -1515,7 +1515,7 @@ $$
 <a id="__codelineno-42-90" name="__codelineno-42-90" href="#__codelineno-42-90"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span> 
 <a id="__codelineno-42-91" name="__codelineno-42-91" href="#__codelineno-42-91"></a>    <span class="n">train</span><span class="p">()</span>
 </code></pre></div>
-<p>乍一看可能看起来很多，但一旦您了解了各个组件，就不再那么简单了。 您只需更改几行代码即可轻松将其更改为您想要使用的任何其他变压器模型。</p>
+<p>乍一看可能看起来很多，但一旦您了解了各个组件，就不再那么简单了。 您只需更改几行代码即可轻松将其更改为您想要使用的任何其他 Transformer 模型。</p>
 <p>该模型的准确率为 93%！ 哇！ 这比任何其他模型都要好得多。 但是这值得吗？</p>
 <p>我们使用 LSTM 能够实现 90% 的目标，而且它们更简单、更容易训练并且推理速度更快。 通过使用不同的数据处理或调整层、节点、dropout、学习率、更改优化器等参数，我们可以将该模型改进一个百分点。然后我们将从 BERT 中获得约 2% 的收益。 另一方面，BERT 的训练时间要长得多，参数很多，而且推理速度也很慢。 最后，您应该审视自己的业务并做出明智的选择。 不要仅仅因为 BERT“酷”而选择它。</p>
 <p>必须注意的是，我们在这里讨论的唯一任务是分类，但将其更改为回归、多标签或多类只需要更改几行代码。 例如，多类分类设置中的同一问题将有多个输出和交叉熵损失。 其他一切都应该保持不变。 自然语言处理非常庞大，我们只讨论了其中的一小部分。 显然，这是一个很大的比例，因为大多数工业模型都是分类或回归模型。 如果我开始详细写所有内容，我最终可能会写几百页，这就是为什么我决定将所有内容包含在一本单独的书中：接近（几乎）任何 NLP 问题！</p>

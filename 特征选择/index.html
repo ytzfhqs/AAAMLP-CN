@@ -520,10 +520,10 @@
 <p align="center"><b>图 1：皮尔逊相关矩阵样本</b> </p>
 
 <p>我们看到，MedInc_Sqrt 与 MedInc 的相关性非常高。因此，我们可以删除其中一个特征。</p>
-<p>现在我们可以转向一些<strong>单变量特征选择方法</strong>。单变量特征选择只不过是针对给定目标对每个特征进行评分。<strong>互信息</strong>、<strong>方差分析 F 检验和 chi2</strong> 是一些最常用的单变量特征选择方法。在 scikit- learn 中，有两种方法可以使用这些方法。
+<p>现在我们可以转向一些<strong>单变量特征选择方法</strong>。单变量特征选择只不过是针对给定目标对每个特征进行评分。<strong>互信息</strong>、<strong>方差分析 F 检验和卡方检验</strong> 是一些最常用的单变量特征选择方法。在 scikit- learn 中，有两种方法可以使用这些方法。
 - SelectKBest：保留得分最高的 k 个特征
 - SelectPercentile：保留用户指定百分比内的顶级特征。</p>
-<p>必须注意的是，只有非负数据才能使用 chi2。在自然语言处理中，当我们有一些单词或基于 tf-idf 的特征时，这是一种特别有用的特征选择技术。最好为单变量特征选择创建一个包装器，几乎可以用于任何新问题。</p>
+<p>必须注意的是，只有非负数据才能使用卡方检验。在自然语言处理中，当我们有一些单词或基于 tf-idf 的特征时，这是一种特别有用的特征选择技术。最好为单变量特征选择创建一个包装器，几乎可以用于任何新问题。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">chi2</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">f_classif</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">f_regression</span>
