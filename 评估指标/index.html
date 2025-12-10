@@ -1384,7 +1384,7 @@ Percentage\ Error = (( True\ Value – Predicted\ Value ) / True\ Value ) \times
 <p>简单地说，R 方表示模型与数据的拟合程度。R 方接近 1.0 表示模型与数据的拟合程度相当好，而接近 0 则表示模型不是那么好。当模型只是做出荒谬的预测时，R 方也可能是负值。</p>
 <p>R 方的计算公式如下所示，但 Python 的实现总是能让一切更加清晰。</p>
 <div class="arithmatex">\[
-R^2 = \frac{\sum^{N}_{i=1}(y_{t_i}-y_{p_i})^2}{\sum^{N}_{i=1}(y_{t_i} - y_{t_{mean}})}
+R^2 = 1 - \frac{\sum^{N}_{i=1}(y_{t_i}-y_{p_i})^2}{\sum^{N}_{i=1}(y_{t_i} - y_{t_{mean}})^2}
 \]</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">r2</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
@@ -1399,7 +1399,7 @@ R^2 = \frac{\sum^{N}_{i=1}(y_{t_i}-y_{p_i})^2}{\sum^{N}_{i=1}(y_{t_i} - y_{t_{me
 <a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>        <span class="n">denominator</span> <span class="o">+=</span> <span class="p">(</span><span class="n">yt</span> <span class="o">-</span> <span class="n">mean_true_value</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 <a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>    <span class="n">ratio</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
 <a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>    <span class="c1"># 计算R方</span>
-<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>    <span class="k">return</span> <span class="mi">1</span> <span class="err">–</span> <span class="n">ratio</span>
+<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ratio</span>
 </code></pre></div>
 <p>还有更多的评价指标，这个清单永远也列不完。我可以写一本书，只介绍不同的评价指标。也许我会的。现在，这些评估指标几乎可以满足你想尝试解决的所有问题。请注意，我已经以最直接的方式实现了这些指标，这意味着它们不够高效。你可以通过正确使用 numpy 以非常高效的方式实现其中大部分指标。例如，看看平均绝对误差的实现，不需要任何循环。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
